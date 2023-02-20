@@ -66,14 +66,14 @@ E-commerce application for buying products of collectible figures.
 
 - Milestone 1. Initial configuration and modules for the project: To finish the project configurations and install the necessary modules for the project.
 - Milestone 2. Greeting screen: Complete the design and functionality of the greeting screen.
-- Milestone 3. Log In / Register Screen: Complete the design and functionality of the Log In / Register screen.
+- Milestone 3. Log In - Register Screen: Complete the design and functionality of the Log In / Register screen.
 - Milestone 4. Database configuration and endpoints: Complete the configuration of the database and the endpoints for the project.
 - Milestone 5. Home Screen: Complete the design and functionality of the Home screen.
 - Milestone 6. Categories screen: Complete the design and functionality of the Categories screen.
 - Milestone 7. Details screen: Complete the design and functionality of the Details screen.
 - Milestone 8. User profile screen: Complete the design and functionality of the User profile screen.
 - Milestone 9. Whishlist screen: Complete the design and functionality of the Whishlist screen.
-- Milestone 10. Cart / Checkout screen: Complete the design and functionality of the Cart / Checkout screen.
+- Milestone 10. Cart - Checkout screen: Complete the design and functionality of the Cart / Checkout screen.
 - Milestone 11. Unit testing: Complete the unit testing for the project.
 
 ### [ 03 ] Requerimientos no funcionales
@@ -99,8 +99,8 @@ E-commerce application for buying products of collectible figures.
 | --------- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | #1        | x   |     |     |     |     |     |     |     |     |
 | #2        |     | x   |     |     |     |     |     |     |     |
-| #3        |     | x   | x   | x   | x   | x   | x   | x   |     |
-| #4        |     |     |     | x   |     |     |     |     |     |
+| #3        |     |     | x   |     |     |     |     |     |     |
+| #4        |     | x   | x   | x   | x   | x   | x   | x   |     |
 | #5        |     |     |     |     | x   |     |     |     |     |
 | #6        |     |     |     |     |     | x   |     |     |     |
 | #7        |     |     |     |     |     |     | x   |     |     |
