@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native';
 import React, { Component } from 'react';
 import LoginForm from '../components/LoginForm';
-import RegisterForm from '../components/RegisterForm';
+import SignUpForm from '../components/SignUpForm';
 import LoginTabSelector from '../components/LoginTabSelector';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../styles/colors';
@@ -51,8 +51,8 @@ export default class Login extends Component {
                   onPasswordChange={(text) => this.changePassword(text)}
                 />
               ) : (
-                <RegisterForm
-                  text='Register'
+                <SignUpForm
+                  text='Sign Up'
                   onUserNameChange={(text) => this.changeUserName(text)}
                   onEmailChange={(text) => this.changeEmail(text)}
                   onPasswordChange={(text) => this.changePassword(text)}
