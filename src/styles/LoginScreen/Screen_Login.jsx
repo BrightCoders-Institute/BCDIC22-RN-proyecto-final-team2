@@ -11,7 +11,7 @@ export const containers = StyleSheet.create({
     left: 0,
     right: 0,
     top: 0,
-    height: 850,
+    height: 760,
   },
   containerForms: {
     top: '7%',
