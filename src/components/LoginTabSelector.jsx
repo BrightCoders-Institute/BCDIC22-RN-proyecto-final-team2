@@ -39,7 +39,7 @@ export default class LoginTabSelector extends Component {
               }}
               onPress={this.props.screen.handler}
             >
-              <Text style={content.registerText}>Sign Up</Text>
+              <Text style={content.registerText}>Register</Text>
             </TouchableOpacity>
           </View>
         </View>

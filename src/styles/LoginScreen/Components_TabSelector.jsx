@@ -38,11 +38,13 @@ export const content = StyleSheet.create({
     alignContent: 'center',
     alignSelf: 'center',
   },
+  loginTab: {},
   loginText: {
     fontFamily: 'Nunito_500Medium',
     color: COLORS.WHITE,
     fontSize: 20,
   },
+  registerTab: {},
   registerText: {
     fontFamily: 'Nunito_500Medium',
     color: COLORS.WHITE,

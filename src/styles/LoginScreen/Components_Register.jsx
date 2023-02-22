@@ -2,21 +2,40 @@ import { StyleSheet } from 'react-native';
 import { COLORS } from '../colors';
 
 export const containers = StyleSheet.create({
-  containerLoginForm: {
+  containerRegisterForm: {
     alignContent: 'center',
     alignSelf: 'center',
     flexDirection: 'column',
   },
 });
 
-export const formLogin = StyleSheet.create({
+export const formRegister = StyleSheet.create({
+  inputUserName: {
+    fontSize: 20,
+    color: COLORS.GRAY,
+    marginTop: 10,
+    marginBottom: 5,
+    fontWeight: 'bold',
+    fontFamily: 'Nunito_500Medium',
+    borderColor: COLORS.WHITE,
+    backgroundColor: COLORS.WHITE,
+    borderWidth: 1,
+    width: 330,
+    height: 45,
+    padding: 10,
+    fontSize: 13,
+    fontWeight: '300',
+    marginBottom: 10,
+    borderRadius: 8,
+    bottom: 15,
+  },
   inputEmail: {
     fontSize: 20,
     color: COLORS.GRAY,
     marginTop: 10,
     marginBottom: 5,
-    fontFamily: 'Nunito_500Medium',
     fontWeight: 'bold',
+    fontFamily: 'Nunito_500Medium',
     borderColor: COLORS.WHITE,
     backgroundColor: COLORS.WHITE,
     borderWidth: 1,
@@ -68,8 +87,8 @@ export const formLogin = StyleSheet.create({
   askText: {
     top: 40,
     alignContent: 'center',
-    fontFamily: 'Nunito_500Medium',
     alignSelf: 'center',
+    fontFamily: 'Nunito_500Medium',
     color: COLORS.WHITE,
   },
   hyperlink: {
