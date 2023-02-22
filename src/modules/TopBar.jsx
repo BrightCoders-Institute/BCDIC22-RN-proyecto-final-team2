@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TextInput } from 'react-native';
 import React, { Component } from 'react';
-import { FontAwesome }  from "@expo/vector-icons"
+import { FontAwesome, FontAwesome5, AntDesign }  from "@expo/vector-icons"
 
 export default class TopBar extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class TopBar extends Component {
       <View style={styles.Bar}>
         <View style={styles.Cell}>
           <Text style={styles.Button}>
-            <FontAwesome style={styles.Icon} name="user-circle"/>
+          <FontAwesome5 name="user-circle" style={styles.Icon} color="black" />
           </Text>
         </View>
 
@@ -17,15 +17,13 @@ export default class TopBar extends Component {
           <Text style={styles.SearchButton}>
             <FontAwesome name="search" style={styles.SearchIcon}/>
             </Text>
-          <TextInput style={styles.SearchInput}>
-
-          </TextInput>
+          <TextInput style={styles.SearchInput}/>
           </View>
         </View>
 
         <View style={styles.Cell}>
           <Text style={styles.Button}>
-            <FontAwesome style={styles.Icon} name="shopping-cart"/>
+            <AntDesign style={styles.Icon} name="shoppingcart"/>
           </Text>
         </View>
       </View>
@@ -35,6 +33,8 @@ export default class TopBar extends Component {
 
 const styles = StyleSheet.create({
     Bar:{
+      backgroundColor: "white",
+      height: 65,
       padding: 2,
       flexDirection: "row",
     },
@@ -58,11 +58,11 @@ const styles = StyleSheet.create({
     SearchCell:{
       flex: 4,
       flexDirection: "row",
+      alignItems: "center",
     },
     SearchBar:{
-      padding: 5,
       width: "100%",
-      height: "100%",
+      height: 45,
       borderColor: "gray",
       borderWidth: 1,
       borderRadius: 50,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
       flex: 7,
     },
     SearchIcon:{
-      fontSize: 28,
+      fontSize: 20,
       flex: 1,
     },
 });

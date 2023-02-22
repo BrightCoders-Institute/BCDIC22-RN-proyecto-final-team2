@@ -32,6 +32,7 @@ export default class BottomBar extends Component {
 const styles = StyleSheet.create({
     Bar:{
       flexDirection: "row",
+      backgroundColor: "white",
     },
     Cell:{
       flex: 1,
