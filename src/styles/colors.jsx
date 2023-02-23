@@ -6,4 +6,5 @@ export const COLORS = {
   DARK_PURPLE: '#170029',
   WHITE: '#FFFFFF',
   GRAY: '#424242',
+  DARKSLATE_BLUE: '#483d8b'
 };

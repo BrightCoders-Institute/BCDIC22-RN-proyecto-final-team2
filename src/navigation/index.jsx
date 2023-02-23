@@ -18,7 +18,7 @@ export default class Navigation extends Component {
       <NavigationContainer>
         <StatusBar style='auto' />
         <Stack.Navigator
-          initialRouteName='Login'
+          initialRouteName='Greeting'
           screenOptions={{
             headerShown: false,
           }}

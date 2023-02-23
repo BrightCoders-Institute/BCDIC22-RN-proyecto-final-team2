@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { COLORS } from '../colors';
 import Constants from 'expo-constants';
 
@@ -11,7 +11,7 @@ export const containers = StyleSheet.create({
     left: 0,
     right: 0,
     top: 0,
-    height: 760,
+    height: Dimensions.get('window').height
   },
   containerForms: {
     top: '7%',
