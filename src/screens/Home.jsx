@@ -2,8 +2,8 @@ import { Text, View, StyleSheet, Dimensions, StatusBar } from 'react-native';
 import React, { Component } from 'react';
 import Constants from 'expo-constants';
 
-import TopBar from '../modules/TopBar';
-import BottomBar from '../modules/BottomBar';
+import TopBar from '../components/TopBar';
+import BottomBar from '../components/BottomBar';
 
 export default class Home extends Component {
   render() {
