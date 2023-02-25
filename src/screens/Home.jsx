@@ -1,48 +1,26 @@
 import { Text, View, StyleSheet, Dimensions, StatusBar } from 'react-native';
-import React, { Component } from 'react';
-import Constants from 'expo-constants';
-
+import React, { Component} from 'react';
 import TopBar from '../components/TopBar';
 import BottomBar from '../components/BottomBar';
+import { StylesHome } from '../styles/HomeScreen/Screen_Home';
+import { COLORS } from '../styles/colors';
 
 export default class Home extends Component {
   render() {
     return (
-      <View style={{ marginTop: Constants.statusBarHeight, height:"100%", backgroundColor: "purple"}}>
-        <View style={styles.TopBar}>
+      <View style={StylesHome.Home}>
+        <View style={StylesHome.TopBar}>
           <TopBar />
         </View>
 
-        <View style={styles.Content}>
-          <Text style={{color:"white"}}>Espacio para el contenido</Text>
+        <View style={StylesHome.Content}>
+          <Text style={{color:COLORS.WHITE}}>Espacio para el contenido</Text>
         </View>
 
-        <View style={styles.BottomBar}>
+        <View style={StylesHome.BottomBar}>
           <BottomBar />
         </View>
       </View>
     );
   }
 }
-
-const SCREEN_HEIGHT = Dimensions.get('screen').height; // device height
-const STATUS_BAR_HEIGHT = StatusBar.currentHeight || 24; 
-const WINDOW_HEIGHT = Dimensions.get('window').height;
-
-const styles = StyleSheet.create({
-  TopBar:{
-    width: "100%",
-    position: "relative",
-  },
-  Content:{    
-    width: "100%",
-    position: "absolute",
-    height: WINDOW_HEIGHT,
-    top: 65,
-  },
-  BottomBar:{
-    width: "100%",
-    position: "absolute",
-    bottom: SCREEN_HEIGHT-(2*STATUS_BAR_HEIGHT+WINDOW_HEIGHT),
-  },
-});

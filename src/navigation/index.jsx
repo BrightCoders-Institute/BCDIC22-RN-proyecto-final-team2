@@ -25,7 +25,6 @@ export default class Navigation extends Component {
           }}
         >
           <Stack.Screen name='Greeting' component={Greeting} />
-
           <Stack.Screen name='Login' component={Login} />
           <Stack.Screen name='Home' component={Home} />
         </Stack.Navigator>
