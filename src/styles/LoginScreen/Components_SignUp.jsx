@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { COLORS } from '../colors';
 import { WEIGHT } from '../fontWeights';
+import { Dimensions } from 'react-native';
 
 export const containers = StyleSheet.create({
   containerSignUpForm: {
@@ -14,7 +15,7 @@ export const inputDefault = StyleSheet.create({
   input: {
     fontSize: 20,
     color: COLORS.GRAY,
-    marginTop: 10,
+    marginTop: Dimensions.get('screen').height / 20000,
     marginBottom: 25,
     fontWeight: WEIGHT.LIGHT,
     fontFamily: 'Nunito_500Medium',
@@ -44,14 +45,13 @@ export const formSignUp = StyleSheet.create({
     height: 40,
     alignContent: 'center',
     alignSelf: 'center',
-    top: 3,
+    top: Dimensions.get('screen').height / 20000,
   },
   buttonText: {
     color: COLORS.WHITE,
     textAlign: 'center',
     textAlignVertical: 'center',
-    fontFamily: 'Poppins_500Medium',
-    fontWeight: WEIGHT.HEAVY,
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 16,
     top: 8,
   },
@@ -66,8 +66,8 @@ export const formSignUp = StyleSheet.create({
     top: 20,
     alignContent: 'center',
     alignSelf: 'center',
-    fontWeight: WEIGHT.BOLD,
-    fontFamily: 'Nunito_500Medium',
+    fontSize: 16,
+    fontFamily: 'Nunito_700Bold',
     color: COLORS.WHITE,
   },
 });
