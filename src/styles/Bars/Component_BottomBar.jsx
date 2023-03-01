@@ -5,7 +5,7 @@ import { WEIGHT } from '../fontWeights';
 export const StyleBottomBar = StyleSheet.create({
     Bar:{
       flexDirection: "row",
-      backgroundColor: "white",
+      backgroundColor: COLORS.WHITE,
     },
     Cell:{
       flex: 1,
@@ -27,14 +27,14 @@ export const StyleBottomBar = StyleSheet.create({
     SelectedBar:{
       height: 5,
       width: "100%",
-      backgroundColor: "magenta",
+      backgroundColor: COLORS.BRIGHT_PURPLE,
       position: "absolute"
     },
 
     NotSelectedBar:{
       height: 5,
       width: "100%",
-      backgroundColor: "gray",
+      backgroundColor: COLORS.GRAY,
       position: "absolute"
     }
 })
