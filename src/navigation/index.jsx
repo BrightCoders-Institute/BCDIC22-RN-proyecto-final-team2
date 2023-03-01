@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import Greeting from '../screens/Greeting';
 import Login from '../screens/Login';
+import Home from '../screens/Home';
 import Categories from '../screens/Categories/Categories';
 import Franchises from '../screens/Categories/Franchises';
 import { COLORS } from '../styles/colors';
@@ -20,7 +21,7 @@ export default class Navigation extends Component {
       <NavigationContainer>
         <StatusBar style='light' backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName='Categories'
+          initialRouteName='Home'
           screenOptions={{
             headerShown: false,
           }}
@@ -28,6 +29,8 @@ export default class Navigation extends Component {
           <Stack.Screen name='Greeting' component={Greeting} />
 
           <Stack.Screen name='Login' component={Login} />
+
+          <Stack.Screen name='Home' component={Home} />
 
           <Stack.Screen name='Categories' component={Categories} />
 
