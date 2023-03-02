@@ -7,8 +7,6 @@ import { Nunito_500Medium } from '@expo-google-fonts/nunito';
 import { Inter_500Medium } from '@expo-google-fonts/inter';
 import { Poppins_500Medium } from '@expo-google-fonts/poppins';
 
-import Home from './src/screens/Home.jsx';
-
 export default function App() {
   const [fontsLoaded] = useFonts({
     Nunito_500Medium,

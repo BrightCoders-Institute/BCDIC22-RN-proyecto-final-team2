@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import Greeting from '../screens/Greeting';
 import Login from '../screens/Login';
-import Home from '../screens/Home';
+import Test from '../screens/Test';
 import Constants from 'expo-constants';
 
 const Stack = createNativeStackNavigator();
@@ -19,14 +19,14 @@ export default class Navigation extends Component {
       <NavigationContainer>
         <StatusBar style='auto' />
         <Stack.Navigator
-          initialRouteName='Home'
+          initialRouteName='Greeting'
           screenOptions={{
             headerShown: false,
           }}
         >
           <Stack.Screen name='Greeting' component={Greeting} />
           <Stack.Screen name='Login' component={Login} />
-          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name='Test' component={Test} />
         </Stack.Navigator>
       </NavigationContainer>
     );
