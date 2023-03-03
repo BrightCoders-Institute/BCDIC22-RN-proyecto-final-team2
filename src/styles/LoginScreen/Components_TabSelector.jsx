@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
 import { COLORS } from '../colors';
+import { Dimensions } from 'react-native';
 
 export const containers = StyleSheet.create({
   containerSelector: {
-    flexDirection: 'row',
-    width: 400,
-    height: 320,
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height * 0.4,
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     justifyContent: 'center',
     alignContent: 'center',
@@ -22,12 +23,14 @@ export const containers = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height / 3.8,
   },
   containerElements: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: 260,
-    top: '12%',
+    top: Dimensions.get('screen').height / 20,
   },
 });
 
@@ -39,13 +42,13 @@ export const content = StyleSheet.create({
     alignSelf: 'center',
   },
   loginText: {
-    fontFamily: 'Nunito_500Medium',
+    fontFamily: 'Poppins_500Medium',
     color: COLORS.WHITE,
-    fontSize: 20,
+    fontSize: 18,
   },
   registerText: {
-    fontFamily: 'Nunito_500Medium',
+    fontFamily: 'Poppins_500Medium',
     color: COLORS.WHITE,
-    fontSize: 20,
+    fontSize: 18,
   },
 });

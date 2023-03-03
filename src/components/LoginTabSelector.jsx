@@ -16,33 +16,32 @@ export default class LoginTabSelector extends Component {
       <View style={containers.containerSelector}>
         <View style={containers.containerLogo}>
           <Image source={require('../resources/Logo.png')} style={content.logo} />
-
-          <View style={containers.containerElements}>
-            <TouchableOpacity
-              style={{
-                borderBottomColor: COLORS.BRIGHT_PURPLE,
-                borderBottomWidth: this.props.screen.state.form === 'login' ? 2 : 0,
-                width: 100,
-                alignContent: 'center',
-                alignItems: 'center',
-              }}
-              onPress={this.props.screen.state.form != 'login' ? this.props.screen.handler : null}
-            >
-              <Text style={content.loginText}>Log In</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                borderBottomColor: COLORS.BRIGHT_PURPLE,
-                borderBottomWidth: this.props.screen.state.form !== 'login' ? 2 : 0,
-                width: 100,
-                alignContent: 'center',
-                alignItems: 'center',
-              }}
-              onPress={this.props.screen.state.form === 'login' ? this.props.screen.handler : null}
-            >
-              <Text style={content.registerText}>Sign Up</Text>
-            </TouchableOpacity>
-          </View>
+        </View>
+        <View style={containers.containerElements}>
+          <TouchableOpacity
+            style={{
+              borderBottomColor: COLORS.BRIGHT_PURPLE,
+              borderBottomWidth: this.props.screen.state.form === 'login' ? 2 : 0,
+              width: 100,
+              alignContent: 'center',
+              alignItems: 'center',
+            }}
+            onPress={this.props.screen.state.form != 'login' ? this.props.screen.handler : null}
+          >
+            <Text style={content.loginText}>Log In</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              borderBottomColor: COLORS.BRIGHT_PURPLE,
+              borderBottomWidth: this.props.screen.state.form !== 'login' ? 2 : 0,
+              width: 100,
+              alignContent: 'center',
+              alignItems: 'center',
+            }}
+            onPress={this.props.screen.state.form === 'login' ? this.props.screen.handler : null}
+          >
+            <Text style={content.registerText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

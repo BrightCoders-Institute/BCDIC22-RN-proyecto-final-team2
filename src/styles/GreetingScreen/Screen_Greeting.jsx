@@ -1,32 +1,38 @@
-import { StyleSheet, } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { COLORS } from '../colors';
 import { WEIGHT } from '../fontWeights';
 
 export const stylesGreeting = StyleSheet.create({
-  containerLogo: {
+  mainContainer: {
+    justifyContent: 'space-evenly',
+    alignContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 90
+    flexDirection: 'column',
+    flex: 1,
   },
 
-  containerTexts: {
-    marginTop: 130
+  textStyle: {
+    textAlign: 'center',
+    color: COLORS.WHITE,
+    fontFamily: 'Nunito_500Medium',
+    fontSize: 30,
   },
 
   startedButton: {
     alignSelf: 'center',
+    justifyContent: 'center',
     backgroundColor: COLORS.WHITE,
-    borderRadius: 30,
-    marginTop: 180,
-    padding: 20,
-    width:'55%' ,
+    borderRadius: 25,
+    height: 50,
+    width: 230,
   },
 
   textButton: {
-    alignSelf:'center',
-    color: COLORS.DARKSLATE_BLUE, 
-    fontFamily: 'Poppins_500Medium', 
-    fontSize: 22, 
-    fontWeight: WEIGHT.BOLD, 
-  }
+    alignSelf: 'center',
+    justifyContent: 'center',
+    color: COLORS.DARK_PURPLE,
+    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 20,
+  },
 });

@@ -1,11 +1,11 @@
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
-import React, { Component } from 'react';
+import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import React, { Component } from "react";
 import {
   containers,
   formSignUp,
   inputDefault,
   inputPassword,
-} from '../styles/LoginScreen/Components_SignUp';
+} from "../styles/LoginScreen/Components_SignUp";
 
 export default class SignUpForm extends Component {
   render() {
@@ -16,7 +16,7 @@ export default class SignUpForm extends Component {
             this.props.onUserNameChange(text);
           }}
           style={inputDefault.input}
-          placeholder='Username'
+          placeholder="Username"
         />
         <TextInput
           onChangeText={(text) => {
@@ -24,7 +24,7 @@ export default class SignUpForm extends Component {
           }}
           value={this.props.value}
           style={inputDefault.input}
-          placeholder='Email'
+          placeholder="Email"
         />
         <TextInput
           onChangeText={(text) => {
@@ -33,10 +33,13 @@ export default class SignUpForm extends Component {
           value={this.props.value}
           style={inputPassword.inputPass}
           secureTextEntry={true}
-          placeholder='Password'
+          placeholder="Password"
         />
 
-        <TouchableOpacity style={formSignUp.buttonContainer}>
+        <TouchableOpacity
+          onPress={() => this.props.onSignUpUser()}
+          style={formSignUp.buttonContainer}
+        >
           <Text style={formSignUp.buttonText}>{this.props.text}</Text>
         </TouchableOpacity>
 

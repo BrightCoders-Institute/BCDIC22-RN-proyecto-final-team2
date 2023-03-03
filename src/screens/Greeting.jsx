@@ -1,12 +1,14 @@
-import { Text, View, Image, Pressable } from 'react-native';
+import { Text, View, Image, Pressable, TouchableOpacity } from 'react-native';
 import React, { Component } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../styles/colors';
 import { containers } from '../styles/LoginScreen/Screen_Login';
 import { stylesGreeting } from '../styles/GreetingScreen/Screen_Greeting';
-import { textDefault, text2 } from '../styles/GreetingScreen/Component_Text';
 
 export default class Greeting extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={containers.container}>
@@ -14,19 +16,21 @@ export default class Greeting extends Component {
           colors={[COLORS.DARK_PURPLE, COLORS.PURPLE]}
           style={containers.containerColor}
         >
-          <View>
-            <View style={stylesGreeting.containerLogo}>
+          <View style={stylesGreeting.mainContainer}>
+            <View>
               <Image source={require('../resources/Logo.png')} />
-                <View style={stylesGreeting.containerTexts}>
-                  <Text style={textDefault.text}>Join the Adventure,</Text>
-                  <Text style={text2.text2}>Collect Today!</Text>
-                </View>
             </View>
-                    <Pressable
-                      style={stylesGreeting.startedButton}
-                    >
-                      <Text style={stylesGreeting.textButton}>Get started</Text>
-                    </Pressable>
+            <View>
+              <Text style={stylesGreeting.textStyle}>
+                Join the Adventure, {'\n'} Collect Today!
+              </Text>
+            </View>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Login')}
+              style={stylesGreeting.startedButton}
+            >
+              <Text style={stylesGreeting.textButton}>Get started</Text>
+            </TouchableOpacity>
           </View>
         </LinearGradient>
       </View>
