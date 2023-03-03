@@ -27,7 +27,7 @@ export default class CarouselSlider extends Component {
       'https://preview.redd.it/f2d4po3oiaj81.jpg?auto=webp&s=3d821397a23c8a7131fb4752d50268f73ea6f13f',
     ];
     return (
-      <View style={{ marginTop: 60, width, height }}>
+      <View style={{ marginTop: 25, width, height }}>
         <ScrollView
           pagingEnabled
           horizontal

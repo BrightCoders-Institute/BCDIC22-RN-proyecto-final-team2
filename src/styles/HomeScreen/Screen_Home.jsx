@@ -1,12 +1,17 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import Constants from 'expo-constants';
+import { StyleSheet, Dimensions, StatusBar } from 'react-native';
 import { COLORS } from '../colors';
+import Constants from 'expo-constants';
+
+const SCREEN_HEIGHT = Dimensions.get('screen').height; // device height
+const STATUS_BAR_HEIGHT = StatusBar.currentHeight || 24; 
+const WINDOW_HEIGHT = Dimensions.get('window').height;
 
 export const containers = StyleSheet.create({
   bgContainer: {
-    marginTop: Constants.statusBarHeight,
+    /* marginTop: Constants.statusBarHeight, */
     backgroundColor: COLORS.PURPLE,
-    height: Dimensions.get('screen').height,
+    height: WINDOW_HEIGHT-70,
+    /* height: Dimensions.get('screen').heightA, */
     justifyContent: 'space-evenly',
   },
   productsContainer: {
@@ -17,7 +22,7 @@ export const containers = StyleSheet.create({
     marginRight: 40,
     marginLeft: 5,
     padding: 10,
-    marginTop: 30,
+    marginTop: 5,
     marginBottom: 50,
     marginRight: Dimensions.get('screen').height / 2,
   },
@@ -28,16 +33,16 @@ export const containers = StyleSheet.create({
 
 export const elements = StyleSheet.create({
   titleBestSellers: {
-    top: 55,
+    top: 25,
     left: 20,
-    color: 'white',
+    color: COLORS.WHITE,
     fontSize: 23,
     fontFamily: 'Poppins_600SemiBold',
   },
   titleRecentlyAdded: {
-    top: Dimensions.get('screen').height * 0.03,
+    top: Dimensions.get('screen').height * 0.03-15,
     left: 20,
-    color: 'white',
+    color: COLORS.WHITE,
     fontSize: 23,
     fontFamily: 'Poppins_600SemiBold',
   },
