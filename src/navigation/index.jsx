@@ -21,7 +21,7 @@ export default class Navigation extends Component {
       <NavigationContainer>
         <StatusBar style="light" backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName="Login"
+          initialRouteName="Home"
           screenOptions={{
             headerShown: false,
           }}
