@@ -11,39 +11,6 @@ import ProductCard from "../../components/ProductCard";
 import { containers } from "../../styles/FranchisesScreen/Screen_Franchises";
 import { titles } from "../../styles/FranchisesScreen/Screen_Franchises";
 
-// const datos = [
-//   {
-//     Marvel: [
-//       {
-//         name: "Iron Man",
-//         franchise: "Marvel",
-//         category: "Superheroes",
-//         rating: 4,
-//         price: 49.99,
-//         image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-//       },
-//       {
-//         name: "Iron Man",
-//         franchise: "Marvel",
-//         category: "Superheroes",
-//         rating: 4,
-//         price: 49.99,
-//         image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-//       },
-//     ],
-//   },
-//   {
-//     DC: {
-//       name: "Iron Man",
-//       franchise: "Marvel",
-//       category: "Superheroes",
-//       rating: 4,
-//       price: 49.99,
-//       image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-//     },
-//   },
-// ];
-
 const sections = [
   {
     title: "Marvel",
