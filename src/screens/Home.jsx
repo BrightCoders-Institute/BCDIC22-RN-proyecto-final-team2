@@ -1,3 +1,4 @@
+
 import {
   Text,
   View,
@@ -11,7 +12,6 @@ import CarouselSlider from "../components/CarouselSlider";
 import { containers } from "../styles/HomeScreen/Screen_Home";
 import { elements } from "../styles/HomeScreen/Screen_Home";
 import Loading from "../components/Loading";
-
 export default class Home extends Component {
   constructor(props) {
     super(props);
