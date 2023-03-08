@@ -15,10 +15,10 @@ export const containers = StyleSheet.create({
     alignContent: "center",
     alignSelf: "center",
     marginRight: 40,
-    marginLeft: 5,
+    marginLeft: 40,
     padding: 10,
-    marginTop: 30,
-    marginBottom: 50,
+    marginTop: 50,
+    marginBottom: -10,
     marginRight: Dimensions.get("screen").height / 2,
   },
   itemSeparator: {
@@ -26,17 +26,17 @@ export const containers = StyleSheet.create({
   },
 });
 
-export const elements = StyleSheet.create({
-  titleBestSellers: {
-    top: 55,
-    left: 20,
+export const titles = StyleSheet.create({
+  maintitle: {
+    top: 45,
+    left: 30,
     color: "white",
-    fontSize: 23,
+    fontSize: 26,
     fontFamily: "Poppins_600SemiBold",
   },
-  titleRecentlyAdded: {
-    top: Dimensions.get("screen").height * 0.03,
-    left: 20,
+  titleFranchise: {
+    top: 50,
+    left: 30,
     color: "white",
     fontSize: 23,
     fontFamily: "Poppins_600SemiBold",

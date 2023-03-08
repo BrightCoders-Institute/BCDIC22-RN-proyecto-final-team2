@@ -20,24 +20,25 @@ export default class Navigation extends Component {
   render() {
     return (
       <NavigationContainer>
-        <StatusBar style='light' backgroundColor={COLORS.DARK_PURPLE} />
+        <StatusBar style="light" backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
+
           initialRouteName='UserProfile'
           screenOptions={{
             headerShown: false,
           }}
         >
-          <Stack.Screen name='Greeting' component={Greeting} />
+          <Stack.Screen name="Greeting" component={Greeting} />
 
-          <Stack.Screen name='Login' component={Login} />
+          <Stack.Screen name="Login" component={Login} />
 
-          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name="Home" component={Home} />
 
           <Stack.Screen name='UserProfile' component={UserProfile} />
 
           <Stack.Screen name='Categories' component={Categories} />
 
-          <Stack.Screen name='Franchises' component={Franchises} />
+          <Stack.Screen name="Franchises" component={Franchises} />
         </Stack.Navigator>
       </NavigationContainer>
     );
