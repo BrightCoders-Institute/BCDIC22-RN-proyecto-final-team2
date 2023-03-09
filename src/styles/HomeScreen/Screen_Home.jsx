@@ -34,11 +34,13 @@ export const elements = StyleSheet.create({
     fontSize: 23,
     fontFamily: "Poppins_600SemiBold",
   },
+  subtitleBestSellers: { fontSize: 18 },
   titleRecentlyAdded: {
     top: Dimensions.get("screen").height * 0.03,
     left: 20,
     color: "white",
-    fontSize: 23,
+    fontSize: 18,
+
     fontFamily: "Poppins_600SemiBold",
   },
 });
