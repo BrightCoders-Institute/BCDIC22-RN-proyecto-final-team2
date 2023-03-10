@@ -1,12 +1,13 @@
-import { Text, View, TouchableOpacity, Image } from "react-native";
-import React, { Component } from "react";
+
+import { Text, View, TouchableOpacity, Image, Pressable } from "react-native";
+import React, { PureComponent } from "react";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { AirbnbRating } from "react-native-ratings";
 import { COLORS } from "../styles/colors";
 import { containers } from "../styles/HomeScreen/Components_ProductCard";
 import { elements } from "../styles/HomeScreen/Components_ProductCard";
 
-export default class ProductCard extends Component {
+export default class ProductCard extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,10 +17,10 @@ export default class ProductCard extends Component {
   render() {
     return (
       <View style={containers.mainContainer}>
-        <TouchableOpacity
+        <Pressable
         // onPress={() => {
         //   this.props.navigation.navigate('ProductDetails', {
-        //     product: this.props.product,
+        //     product: this.props.id,
         //   });
         // }}
         >
@@ -29,7 +30,7 @@ export default class ProductCard extends Component {
           />
         </TouchableOpacity>
         <View>
-          <TouchableOpacity
+          <Pressable
             onPress={() => {
               this.setState({ isFavorite: !this.state.isFavorite });
             }}
@@ -40,17 +41,24 @@ export default class ProductCard extends Component {
               color={COLORS.DARK_PURPLE}
               style={elements.favoriteIcon}
             />
-          </TouchableOpacity>
+          </Pressable>
 
-          <Text style={elements.productTitle}>{this.props.name}</Text>
+
+          <Text style={elements.productTitle}>
+            {this.props.name.length > 10
+              ? this.props.name.substring(0, 7) + "..."
+              : this.props.name}
+          </Text>
           <Text style={elements.textFranchise}>
             Franchise:{" "}
             <Text style={elements.productFranchise}>
-              {this.props.franchise}
+              {this.props.franchise.length > 10
+                ? this.props.franchise.substring(0, 10) + "..."
+                : this.props.franchise}
             </Text>
           </Text>
           <Text style={elements.textCategory}>
-            Category: <Text style={elements.productCategory}>Category</Text>
+            Category: <Text style={elements.productCategory}>My category</Text>
           </Text>
           <AirbnbRating
             showRating={false}
@@ -59,11 +67,13 @@ export default class ProductCard extends Component {
             isDisabled={true}
             starContainerStyle={elements.productRating}
           />
-          <Text style={elements.productPrice}>$ {this.props.price}</Text>
-          <TouchableOpacity onButtonPress style={containers.buttonBuy}>
+          <Text style={elements.productPrice}>
+            $ {this.props.price + ".00"}
+          </Text>
+          <Pressable onButtonPress style={containers.buttonBuy}>
             <Text style={elements.textButtonBuy}>Buy Now</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onButtonPress style={containers.buttonAddToCart}>
+          </Pressable>
+          <Pressable onButtonPress style={containers.buttonAddToCart}>
             <Text style={elements.textButtonAddToCart}>Add to cart</Text>
             <Ionicons
               name="cart-outline"
@@ -71,7 +81,7 @@ export default class ProductCard extends Component {
               color={COLORS.DARK_PURPLE}
               style={elements.cartIcon}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     );

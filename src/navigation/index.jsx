@@ -22,7 +22,7 @@ export default class Navigation extends Component {
       <NavigationContainer>
         <StatusBar style="light" backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName="Categories"
+          initialRouteName="Login"
           screenOptions={{
             headerShown: false,
           }}
