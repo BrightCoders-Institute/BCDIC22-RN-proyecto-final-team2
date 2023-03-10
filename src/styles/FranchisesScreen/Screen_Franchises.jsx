@@ -8,6 +8,8 @@ export const containers = StyleSheet.create({
     backgroundColor: COLORS.PURPLE,
     height: Dimensions.get("screen").height,
     justifyContent: "space-evenly",
+    paddingHorizontal: 15,
+    flex: 1,
   },
   productsContainer: {
     justifyContent: "center",
@@ -28,17 +30,16 @@ export const containers = StyleSheet.create({
 
 export const titles = StyleSheet.create({
   maintitle: {
-    top: 45,
-    left: 30,
     color: "white",
-    fontSize: 26,
-    fontFamily: "Poppins_600SemiBold",
+    fontSize: 25,
+    padding: 20,
+    paddingHorizontal: 0,
+    fontWeight: "bold",
   },
   titleFranchise: {
-    top: 50,
-    left: 30,
     color: "white",
-    fontSize: 23,
-    fontFamily: "Poppins_600SemiBold",
+    fontSize: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
 });
