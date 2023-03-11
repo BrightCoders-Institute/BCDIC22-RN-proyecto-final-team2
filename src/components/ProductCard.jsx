@@ -1,3 +1,4 @@
+
 import { Text, View, TouchableOpacity, Image, Pressable } from "react-native";
 import React, { PureComponent } from "react";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
@@ -27,7 +28,7 @@ export default class ProductCard extends PureComponent {
             style={elements.productImage}
             source={{ uri: this.props.image }}
           />
-        </Pressable>
+        </TouchableOpacity>
         <View>
           <Pressable
             onPress={() => {
@@ -41,6 +42,7 @@ export default class ProductCard extends PureComponent {
               style={elements.favoriteIcon}
             />
           </Pressable>
+
 
           <Text style={elements.productTitle}>
             {this.props.name.length > 10
