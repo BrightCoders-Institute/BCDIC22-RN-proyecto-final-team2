@@ -8,7 +8,7 @@ export const containers = StyleSheet.create({
     marginTop: 20,
     marginRight: 20,
     marginLeft: 20,
-    marginBottom: 80,
+    marginBottom: 300,
     width: Dimensions.get('screen').width - 30,
     height: 640,
     justifyContent: 'flex-start',
@@ -66,7 +66,7 @@ export const elements = StyleSheet.create({
     color: COLORS.DARK_PURPLE,
   },
   iconSection: {
-    marginLeft: 90,
+    marginLeft: 100,
   },
   dividerSection: {
     color: COLORS.DARK_PURPLE,

@@ -1,15 +1,8 @@
-import {
-  Text,
-  View,
-  FlatList,
-  ScrollView,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
-import React, { Component } from "react";
-import CategoriesCard from "../../components/CategoriesCard";
-import { containers } from "../../styles/CategoriesScreen/Screen_Categories";
-import { elements } from "../../styles/CategoriesScreen/Screen_Categories";
+import { Text, View, FlatList, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react';
+import CategoriesCard from '../../components/CategoriesCard';
+import { containers } from '../../styles/CategoriesScreen/Screen_Categories';
+import { elements } from '../../styles/CategoriesScreen/Screen_Categories';
 
 export default class Categories extends Component {
   constructor(props) {
@@ -20,12 +13,12 @@ export default class Categories extends Component {
   }
 
   getCategories() {
-    fetch("https://findgure.up.railway.app/api/categories/")
+    fetch('https://findgure.up.railway.app/api/categories/')
       .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("Something went wrong ...");
+          throw new Error('Something went wrong ...');
         }
       })
       .then((data) => {
@@ -51,7 +44,7 @@ export default class Categories extends Component {
               return (
                 <TouchableOpacity
                   onPress={() =>
-                    this.props.navigation.navigate("Franchises", {
+                    this.props.navigation.navigate('Franchises', {
                       id: item.id,
                       category: item.name,
                     })
