@@ -29,14 +29,15 @@ export const titles = StyleSheet.create({
   maintitle: {
     top: 45,
     left: 30,
-    color: "white",
+    color: COLORS.WHITE,
     fontSize: 26,
     fontFamily: "Poppins_600SemiBold",
   },
   titleFranchise: {
     top: 50,
     left: 30,
-    color: "white",
+    marginBottom: 50,
+    color: COLORS.WHITE,
     fontSize: 23,
     fontFamily: "Poppins_600SemiBold",
   },

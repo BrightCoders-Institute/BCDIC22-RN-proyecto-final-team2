@@ -53,10 +53,8 @@ import {Text, View, FlatList, ScrollView, SectionList, StyleSheet,} from "react-
       return (
         <View style={containers.bgContainer}>
           <ScrollView nestedScrollEnabled={true}>
+          <Text style={titles.titleFranchise}>Wishlist</Text>
             <SectionList
-              renderSectionHeader={({ section: { title } }) => (
-                <Text style={titles.titleFranchise}>{title}</Text>
-              )}
               sections={sections}
               keyExtractor={(item, index) => item + index}
               renderItem={({ item }) => {
