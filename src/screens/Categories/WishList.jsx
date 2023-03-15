@@ -1,8 +1,8 @@
 import {Text, View, FlatList, ScrollView, SectionList, StyleSheet,} from "react-native";
   import React, { Component } from "react";
-  import ProductCard from "../../components/ProductCard";
   import { containers } from "../../styles/WishlistScreen/Screen_Wishlist";
   import { titles } from "../../styles/WishlistScreen/Screen_Wishlist";
+  import WishedCard from "../../components/WishedCard";
   
   const sections = [
     {
@@ -10,34 +10,50 @@ import {Text, View, FlatList, ScrollView, SectionList, StyleSheet,} from "react-
       data: [
         {
           name: "Iron Man",
-          franchise: "Marvel",
-          category: "Superheroes",
-          rating: 6,
+          edition: "#65f",
+          rating: 3.5,
           price: 99.99,
+          reviews: 125,
           image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
         },
         {
           name: "Iron Man",
-          franchise: "Marvel",
-          category: "Superheroes",
-          rating: 4,
+          edition: "#65f",
+          rating: 5,
           price: 49.99,
+          reviews: 205,
           image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
         },
         {
           name: "Iron Man",
-          franchise: "Marvel",
-          category: "Superheroes",
-          rating: 4,
-          price: 49.99,
+          edition: "#65f",
+          rating: 3.5,
+          price: 99.99,
+          reviews: 125,
           image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
         },
         {
           name: "Iron Man",
-          franchise: "Marvel",
-          category: "Superheroes",
-          rating: 4,
-          price: 49.99,
+          edition: "#65f",
+          rating: 3.5,
+          price: 99.99,
+          reviews: 125,
+          image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
+        },
+        {
+          name: "Iron Man",
+          edition: "#65f",
+          rating: 3.5,
+          price: 99.99,
+          reviews: 125,
+          image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
+        },
+        {
+          name: "Iron Man",
+          edition: "#65f",
+          rating: 3.5,
+          price: 99.99,
+          reviews: 125,
           image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
         },
       ],
@@ -67,7 +83,7 @@ import {Text, View, FlatList, ScrollView, SectionList, StyleSheet,} from "react-
                       ItemSeparatorComponent={() => (
                         <View style={containers.itemSeparator} />
                       )}
-                      renderItem={({ item }) => <ProductCard product={item} />}
+                      renderItem={({ item }) => <WishedCard product={item} />}
                     />
                       );
               }}
