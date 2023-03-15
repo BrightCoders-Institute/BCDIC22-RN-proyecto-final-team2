@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import OnCategories from './onCategories';
 import OnHome from './onHome';
+import OnWishlist from './onWishlist'
 import { FontAwesome5, FontAwesome, AntDesign } from '@expo/vector-icons';
 import UserProfile from '../screens/UserProfile';
 import Checkout from '../screens/Checkout';
@@ -39,6 +40,16 @@ export default class LoggedNav extends Component {
           options={{
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={'th-large'} size={size} color={color} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name='OnWishlist'
+          component={OnWishlist}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <FontAwesome name={'heart'} size={size} color={color} />
             ),
           }}
         />

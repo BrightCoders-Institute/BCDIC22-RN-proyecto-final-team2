@@ -68,7 +68,6 @@ import {Text, View, FlatList, ScrollView, SectionList, StyleSheet,} from "react-
     render() {
       return (
         <View style={containers.bgContainer}>
-          <ScrollView nestedScrollEnabled={true}>
           <Text style={titles.titleFranchise}>Wishlist</Text>
             <SectionList
               sections={sections}
@@ -88,7 +87,6 @@ import {Text, View, FlatList, ScrollView, SectionList, StyleSheet,} from "react-
                       );
               }}
             />
-          </ScrollView>
         </View>
       );
     }
