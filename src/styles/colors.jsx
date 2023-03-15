@@ -6,6 +6,9 @@ export const COLORS = {
   DARK_PURPLE: '#170029',
   WHITE: '#FFFFFF',
   GRAY: '#424242',
+  LIGHT_GRAY: '#d3d3d3',
   BRIGHT_GRAY: '#BDBDBD',
   DARKSLATE_BLUE: '#483d8b',
+  RED: '#ff0000',
+  GOLD: '#ffd700',
 };

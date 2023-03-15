@@ -1,23 +1,23 @@
-import { Text, View, Alert } from "react-native";
-import React, { Component } from "react";
-import LoginForm from "../components/LoginForm";
-import SignUpForm from "../components/SignUpForm";
-import LoginTabSelector from "../components/LoginTabSelector";
-import { LinearGradient } from "expo-linear-gradient";
-import { COLORS } from "../styles/colors";
-import { containers } from "../styles/LoginScreen/Screen_Login";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import ErrorModal from "../components/Modals/ErrorModalLogin";
-import ErrorModalSignup from "../components/Modals/ErrorModalSignup";
-import SuccessSignup from "../components/Modals/SuccessSignup";
+import { View, Alert } from 'react-native';
+import React, { Component } from 'react';
+import LoginForm from '../components/LoginForm';
+import SignUpForm from '../components/SignUpForm';
+import LoginTabSelector from '../components/LoginTabSelector';
+import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '../styles/colors';
+import { containers } from '../styles/LoginScreen/Screen_Login';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import ErrorModal from '../components/Modals/ErrorModalLogin';
+import ErrorModalSignup from '../components/Modals/ErrorModalSignup';
+import SuccessSignup from '../components/Modals/SuccessSignup';
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      form: "login",
-      email: "",
-      password: "",
-      username: "",
+      form: 'login',
+      email: '',
+      password: '',
+      username: '',
       modalVisible: false,
       modalVisibleSignup: false,
       modalVisibleSuccess: false,
@@ -34,7 +34,7 @@ export default class Login extends Component {
   handler = () => {
     this.setState({
       ...this.state,
-      form: this.state.form === "login" ? "register" : "login",
+      form: this.state.form === 'login' ? 'register' : 'login',
     });
   };
 
@@ -66,7 +66,7 @@ export default class Login extends Component {
   }
   async saveToken(token) {
     try {
-      await AsyncStorage.setItem("token", token);
+      await AsyncStorage.setItem('token', token);
     } catch (error) {
       Alert.alert();
     }
@@ -76,10 +76,10 @@ export default class Login extends Component {
     const username = this.state.email;
     const password = this.state.password;
 
-    fetch("https://findgure.up.railway.app/api/login/", {
-      method: "POST",
+    fetch('https://findgure.up.railway.app/api/login/', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ username, password }),
     })
@@ -95,7 +95,7 @@ export default class Login extends Component {
       .then((data) => {
         if (data.token) {
           this.saveToken(data.token);
-          this.props.navigation.navigate("Home");
+          this.props.navigation.navigate('LoggedNav');
         }
       })
 
@@ -109,10 +109,10 @@ export default class Login extends Component {
     const password = this.state.password;
     const email = this.state.email;
 
-    fetch("https://findgure.up.railway.app/api/signup/", {
-      method: "POST",
+    fetch('https://findgure.up.railway.app/api/signup/', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ username, password, email }),
     })
@@ -140,10 +140,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={containers.container}>
-        <ErrorModal
-          modalVisible={this.state.modalVisible}
-          hideModal={this.changeModalVisible}
-        />
+        <ErrorModal modalVisible={this.state.modalVisible} hideModal={this.changeModalVisible} />
         <ErrorModalSignup
           modalVisible={this.state.modalVisibleSignup}
           hideModalSignup={this.changeModalVisibleSignpup}
@@ -158,20 +155,18 @@ export default class Login extends Component {
           style={containers.containerColor}
         >
           <View>
-            <LoginTabSelector
-              screen={{ handler: this.handler, state: this.state }}
-            />
+            <LoginTabSelector screen={{ handler: this.handler, state: this.state }} />
             <View style={containers.containerForms}>
-              {this.state.form === "login" ? (
+              {this.state.form === 'login' ? (
                 <LoginForm
-                  text="Log In"
+                  text='Log In'
                   onEmailChange={(text) => this.changeEmail(text)}
                   onPasswordChange={(text) => this.changePassword(text)}
                   onLoginUser={this.loginUser}
                 />
               ) : (
                 <SignUpForm
-                  text="Sign Up"
+                  text='Sign Up'
                   onUserNameChange={(text) => this.changeUserName(text)}
                   onEmailChange={(text) => this.changeEmail(text)}
                   onPasswordChange={(text) => this.changePassword(text)}

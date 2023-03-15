@@ -1,18 +1,14 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { COLORS } from '../colors';
-import { WEIGHT } from '../fontWeights';
-import Constants from 'expo-constants';
 
 export const containers = StyleSheet.create({
   container: {
-    marginTop: Constants.statusBarHeight,
-    backgroundColor: COLORS.PURPLE,
-    height: Dimensions.get('screen').height,
+    marginBottom: 55,
   },
   flatListCont: {
     justifyContent: 'center',
     alignContent: 'center',
-    top: 120,
+    top: 40,
   },
   wrapperStyle: {
     justifyContent: 'space-evenly',
@@ -26,6 +22,6 @@ export const elements = StyleSheet.create({
     fontFamily: 'Poppins_600SemiBold',
     color: COLORS.WHITE,
     left: 20,
-    top: 80,
+    top: 10,
   },
 });
