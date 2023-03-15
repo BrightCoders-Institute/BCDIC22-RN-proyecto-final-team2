@@ -8,6 +8,7 @@ import Home from '../screens/Home';
 import Categories from '../screens/Categories/Categories';
 import Franchises from '../screens/Categories/Franchises';
 import UserProfile from '../screens/UserProfile';
+import Wishlist from '../screens/Categories/WishList';
 import { COLORS } from '../styles/colors';
 
 const Stack = createNativeStackNavigator();
@@ -23,7 +24,7 @@ export default class Navigation extends Component {
         <StatusBar style="light" backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
 
-          initialRouteName='UserProfile'
+          initialRouteName='Wishlist'
           screenOptions={{
             headerShown: false,
           }}
@@ -39,6 +40,8 @@ export default class Navigation extends Component {
           <Stack.Screen name='Categories' component={Categories} />
 
           <Stack.Screen name="Franchises" component={Franchises} />
+
+          <Stack.Screen name="Wishlist" component={Wishlist} />
         </Stack.Navigator>
       </NavigationContainer>
     );
