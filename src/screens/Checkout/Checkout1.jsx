@@ -4,16 +4,16 @@ import {
   containers,
   stylesCheckout,
   titles,
-} from "../styles/CheckoutScreen/Screen_Checkout";
+} from "../../styles/CheckoutScreen/Screen_Checkout";
 import { Formik } from "formik";
 import { MaterialIcons } from "@expo/vector-icons";
-import { COLORS } from "../styles/colors";
+import { COLORS } from "../../styles/colors";
 
 export default function Checkout() {
   return (
     <View style={containers.bgContainer}>
       <Image
-        source={require("../resources/checkoutNavigator.png")}
+        source={require("../../resources/checkoutNavigator.png")}
         style={{ marginTop: 40, alignSelf: "center" }}
       />
       <Text style={titles.maintitle}>Enter your address:</Text>
