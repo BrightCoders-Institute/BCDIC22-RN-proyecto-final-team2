@@ -17,11 +17,11 @@ export default class WishedCard extends Component {
     return (
       <View style={containers.mainContainer}>
         <TouchableOpacity
-        // onPress={() => {
-        //   this.props.navigation.navigate('ProductDetails', {
-        //     product: this.props.product,
-        //   });
-        // }}
+        /* onPress={() => {
+        this.props.navigation.navigate('ProductDetails', {
+        product: this.props.product,
+        });
+        }} */
         >
           <Image style={elements.productImage} source={{ uri: this.props.product.image }} />
         </TouchableOpacity>

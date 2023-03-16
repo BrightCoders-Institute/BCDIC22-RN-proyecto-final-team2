@@ -4,7 +4,6 @@ import { COLORS } from "../colors";
 
 export const containers = StyleSheet.create({
   bgContainer: {
-    /* marginTop: Constants.statusBarHeight, */
     backgroundColor: COLORS.PURPLE,
     height: Dimensions.get("screen").height-170,
     justifyContent: "space-evenly",
@@ -14,10 +13,9 @@ export const containers = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     alignSelf: "center",
-    marginRight: 40,
-    marginLeft: 40,
+    marginHorizontal: 40,
+    marginVertical: 0,
     padding: 10,
-    marginTop: 0,
     marginRight: Dimensions.get("screen").height / 2,
   },
   itemSeparator: {
@@ -35,7 +33,6 @@ export const titles = StyleSheet.create({
   },
   titleFranchise: {
     top: 15,
-    bottom: 15,
     left: 30,
     marginBottom: 15,
     color: COLORS.WHITE,
