@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import React, { Component } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../styles/colors';
