@@ -21,7 +21,6 @@ export default class OnCategories extends Component {
   }
 
   render() {
-    console.log(this.state.search);
     return (
       <Stack.Navigator
         initialRouteName='Categories'
@@ -37,7 +36,12 @@ export default class OnCategories extends Component {
             />
           ),
           headerRight: (props) => (
-            <AntDesign name='shoppingcart' size={30} color={props.tintColor} />
+            <AntDesign
+              onPress={() => this.props.navigation.navigate('Cart')}
+              name='shoppingcart'
+              size={30}
+              color={props.tintColor}
+            />
           ),
           headerTitle: () => (
             <SearchInput onSearch={(text) => this.changeText(text)} value={this.state.search} />
