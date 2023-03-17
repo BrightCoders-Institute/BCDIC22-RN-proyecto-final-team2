@@ -4,6 +4,7 @@ import Home from '../screens/Home';
 import { FontAwesome5, AntDesign } from '@expo/vector-icons';
 import UserProfile from '../screens/UserProfile';
 import SearchInput from '../components/SearchInput';
+import Cart from '../screens/Cart';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,6 @@ export default class OnHome extends Component {
   }
 
   render() {
-    console.log(this.state.search);
     return (
       <Stack.Navigator
         initialRouteName='Home'
@@ -40,7 +40,12 @@ export default class OnHome extends Component {
             />
           ),
           headerRight: (props) => (
-            <AntDesign name='shoppingcart' size={30} color={props.tintColor} />
+            <AntDesign
+              onPress={() => this.props.navigation.navigate('Cart')}
+              name='shoppingcart'
+              size={30}
+              color={props.tintColor}
+            />
           ),
         }}
       >
@@ -52,7 +57,7 @@ export default class OnHome extends Component {
 
         <Stack.Screen name='UserProfile' component={UserProfile} />
 
-        <Stack.Screen name='MyCart' component={Home} />
+        <Stack.Screen name='Cart' component={Cart} />
       </Stack.Navigator>
     );
   }
