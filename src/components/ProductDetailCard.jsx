@@ -5,29 +5,25 @@ import { AirbnbRating } from "react-native-ratings";
 import { COLORS } from "../styles/colors";
 import { containers } from "../styles/HomeScreen/Components_ProductCard";
 import { elements } from "../styles/HomeScreen/Components_ProductCard";
-
-export default class ProductCard extends PureComponent {
+import { productDetailStyle } from "../styles/ProductDetail/ProductDetailCard";
+export default class ProductDetailCard extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       isFavorite: false,
     };
   }
+
   render() {
     return (
-      <View style={containers.mainContainer}>
-        <Pressable
-        // onPress={() => {
-        //   this.props.navigation.navigate('ProductDetails', {
-        //     product: this.props.id,
-        //   });
-        // }}
-        >
-          <Image
-            style={elements.productImage}
-            source={{ uri: this.props.image }}
-          />
-        </Pressable>
+      <View style={productDetailStyle.cardContainer}>
+        <Image
+          style={productDetailStyle.imageProduct}
+          source={{
+            uri: "https://findgure.s3.amazonaws.com/products/Deadpool.png",
+          }}
+        />
+
         <View>
           <Pressable
             onPress={() => {
@@ -38,37 +34,43 @@ export default class ProductCard extends PureComponent {
               name={this.state.isFavorite ? "heart" : "heart-o"}
               size={24}
               color={COLORS.DARK_PURPLE}
-              style={elements.favoriteIcon}
+              style={productDetailStyle.heartIcon}
             />
           </Pressable>
 
           <Text style={elements.productTitle}>
-            {this.props.name.length > 10
-              ? this.props.name.substring(0, 7) + "..."
-              : this.props.name}
+            {"product name".length > 10
+              ? "Product name".substring(0, 7) + "..."
+              : "Product name"}
           </Text>
           <Text style={elements.textFranchise}>
             Franchise:{" "}
             <Text style={elements.productFranchise}>
-              {this.props.franchise.length > 10
-                ? this.props.franchise.substring(0, 10) + "..."
-                : this.props.franchise}
+              {"franchise name".length > 15
+                ? "Franchise name".substring(0, 10) + "..."
+                : "Franchise name"}
             </Text>
           </Text>
           <Text style={elements.textCategory}>
             Category: <Text style={elements.productCategory}>My category</Text>
           </Text>
+          <Text
+            numberOfLines={10}
+            style={productDetailStyle.descriptionProduct}
+          >
+            Neque porro quisquam est qui dolorem ipsum quia dolor sit
+            amet.dolorem ipsum quia dolor sit amet
+          </Text>
           <AirbnbRating
             showRating={false}
             size={15}
-            defaultRating={this.props.rating}
+            defaultRating={5}
             isDisabled={true}
-            starContainerStyle={elements.productRating}
+            starContainerStyle={productDetailStyle.starContainer}
           />
-          <Text style={elements.productPrice}>
-            $ {this.props.price + ".00"}
-          </Text>
-          <Pressable onButtonPress style={containers.buttonBuy}>
+          <Text style={productDetailStyle.priceProduct}>$ {45 + ".00"}</Text>
+          <View></View>
+          <Pressable onButtonPress style={productDetailStyle.buttonBuy}>
             <Text style={elements.textButtonBuy}>Buy Now</Text>
           </Pressable>
           <Pressable onButtonPress style={containers.buttonAddToCart}>

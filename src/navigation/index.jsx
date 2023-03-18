@@ -8,6 +8,7 @@ import Home from "../screens/Home";
 import Categories from "../screens/Categories/Categories";
 import Franchises from "../screens/Categories/Franchises";
 import UserProfile from "../screens/UserProfile";
+import ProductDetail from "../screens/ProductDetail";
 import { COLORS } from "../styles/colors";
 
 const Stack = createNativeStackNavigator();
@@ -22,7 +23,7 @@ export default class Navigation extends Component {
       <NavigationContainer>
         <StatusBar style="light" backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName="Login"
+          initialRouteName="ProductDetail"
           screenOptions={{
             headerShown: false,
           }}
@@ -38,6 +39,8 @@ export default class Navigation extends Component {
           <Stack.Screen name="Categories" component={Categories} />
 
           <Stack.Screen name="Franchises" component={Franchises} />
+
+          <Stack.Screen name="ProductDetail" component={ProductDetail} />
         </Stack.Navigator>
       </NavigationContainer>
     );
