@@ -1,7 +1,10 @@
-import { Text, View, Image, ScrollView, Dimensions } from "react-native";
-import React, { Component } from "react";
-import { containers } from "../styles/HomeScreen/Components_CarouselSlider";
-import { stateIndicator } from "../styles/HomeScreen/Components_CarouselSlider";
+import { Text, View, Image, ScrollView, Dimensions } from 'react-native';
+import React, { Component } from 'react';
+import { containers } from '../styles/HomeScreen/Components_CarouselSlider';
+import { stateIndicator } from '../styles/HomeScreen/Components_CarouselSlider';
+
+const { width } = Dimensions.get('screen');
+const height = width * 0.5;
 
 export default class CarouselSlider extends Component {
   constructor(props) {
@@ -12,9 +15,7 @@ export default class CarouselSlider extends Component {
   }
 
   changeState = ({ nativeEvent }) => {
-    const slide = Math.ceil(
-      nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width
-    );
+    const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
     if (slide !== this.state.active) {
       this.setState({ active: slide });
     }
@@ -22,10 +23,8 @@ export default class CarouselSlider extends Component {
 
   render() {
     let count = -1;
-    const { width } = Dimensions.get("screen");
-    const height = width * 0.5;
     return (
-      <View style={{ marginTop: 60, width, height }}>
+      <View style={{ marginTop: 10, width, height }}>
         <ScrollView
           pagingEnabled
           horizontal
@@ -39,7 +38,7 @@ export default class CarouselSlider extends Component {
                 <Image
                   key={index}
                   source={{ uri: product.best_seller_image }}
-                  style={{ width, height, resizeMode: "cover" }}
+                  style={{ width, height, resizeMode: 'cover' }}
                 />
               )
             );

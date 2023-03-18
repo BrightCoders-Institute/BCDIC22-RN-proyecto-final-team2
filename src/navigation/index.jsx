@@ -8,8 +8,12 @@ import Home from "../screens/Home";
 import Categories from "../screens/Categories/Categories";
 import Franchises from "../screens/Categories/Franchises";
 import UserProfile from "../screens/UserProfile";
-import ProductDetail from "../screens/ProductDetail";
+import Checkout from "../screens/Checkout/Checkout1";
+import Checkout2 from "../screens/Checkout/Checkout2";
 import { COLORS } from "../styles/colors";
+import LoggedNav from './loggedNav';
+import NotLoggedNav from './notLoggedNav';
+import { navTheme } from '../theme/themes';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,14 +24,16 @@ export default class Navigation extends Component {
 
   render() {
     return (
-      <NavigationContainer>
-        <StatusBar style="light" backgroundColor={COLORS.DARK_PURPLE} />
+      <NavigationContainer theme={navTheme}>
+        <StatusBar style='light' backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName="ProductDetail"
+          initialRouteName='NotLoggedNav'
+          initialRouteName='LoggedNav'
           screenOptions={{
             headerShown: false,
           }}
         >
+
           <Stack.Screen name="Greeting" component={Greeting} />
 
           <Stack.Screen name="Login" component={Login} />
@@ -40,8 +46,16 @@ export default class Navigation extends Component {
 
           <Stack.Screen name="Franchises" component={Franchises} />
 
-          <Stack.Screen name="ProductDetail" component={ProductDetail} />
+          <Stack.Screen name="Checkout1" component={Checkout} />
+
+          <Stack.Screen name="Checkout2" component={Checkout2} />
+
+          <Stack.Screen name='NotLoggedNav' component={NotLoggedNav} />
+          
+          <Stack.Screen name='LoggedNav' component={LoggedNav} />
+
         </Stack.Navigator>
+        
       </NavigationContainer>
     );
   }
