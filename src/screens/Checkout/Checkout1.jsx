@@ -1,91 +1,15 @@
-<<<<<<< HEAD:src/screens/Checkout/Checkout1.jsx
-import { TextInput, View, Text, TouchableOpacity, Image } from "react-native";
-import React, { useState, useEffect } from "react";
-import {
-  containers,
-  stylesCheckout,
-  titles,
-} from "../../styles/CheckoutScreen/Screen_Checkout";
-import { Formik } from "formik";
-import { MaterialIcons } from "@expo/vector-icons";
-import { COLORS } from "../../styles/colors";
+import { TextInput, View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { containers, stylesCheckout, titles } from '../../styles/CheckoutScreen/Screen_Checkout';
+import { Formik } from 'formik';
+import { MaterialIcons } from '@expo/vector-icons';
+import { COLORS } from '../../styles/colors';
 
 export default function Checkout() {
   return (
     <View style={containers.bgContainer}>
-      <Image
-        source={require("../../resources/checkoutNavigator.png")}
-        style={{ marginTop: 40, alignSelf: "center" }}
-      />
-      <Text style={titles.maintitle}>Enter your address:</Text>
-      <Formik
-        initialValues={{
-          address: "",
-          city: "",
-          postalcode: "",
-          country: "",
-        }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.address) {
-            errors.address = "Required!";
-          }
-          if (!values.city) {
-            errors.city = "Required!";
-          }
-          if (!values.postalcode) {
-            errors.postalcode = "Required!";
-          }
-          if (!values.country) {
-            errors.country = "Required!";
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <>
-            <View style={stylesCheckout.containerFields}>
-              <TextInput
-                style={stylesCheckout.input}
-                placeholder="Address"
-                placeholderTextColor={COLORS.LIGHT_GRAY}
-                onChangeText={handleChange("address")}
-                onBlur={handleBlur("address")}
-                value={values.address}
-              />
-              {touched.address && errors.address && (
-                <Text style={styles.error}>{errors.address}</Text>
-              )}
-=======
-import { TextInput, View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { containers, stylesCheckout, titles } from '../styles/CheckoutScreen/Screen_Checkout';
-import { Formik } from 'formik';
-import { MaterialIcons } from '@expo/vector-icons';
-import { COLORS } from '../styles/colors';
-
-export default function Checkout() {
-  return (
-    <ScrollView>
-      <View style={containers.bgContainer}>
-        <Image
-          source={require('../resources/checkoutNavigator.png')}
-          style={{ marginTop: 20, alignSelf: 'center' }}
-        />
+      <Image source={require('../../resources/checkoutNavigator.png')} style={titles.image} />
+      <ScrollView>
         <Text style={titles.maintitle}>Enter your address:</Text>
         <Formik
           initialValues={{
@@ -131,7 +55,6 @@ export default function Checkout() {
                 {touched.address && errors.address && (
                   <Text style={styles.error}>{errors.address}</Text>
                 )}
->>>>>>> master:src/screens/Checkout.jsx
 
                 <TextInput
                   style={stylesCheckout.input}
@@ -178,7 +101,7 @@ export default function Checkout() {
             </>
           )}
         </Formik>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
