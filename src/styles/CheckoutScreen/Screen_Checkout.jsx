@@ -3,7 +3,7 @@ import { COLORS } from '../colors';
 
 export const containers = StyleSheet.create({
   bgContainer: {
-    marginBottom: 20,
+    marginBottom: 70,
   },
 });
 
@@ -14,6 +14,10 @@ export const titles = StyleSheet.create({
     color: COLORS.WHITE,
     fontSize: 26,
     fontFamily: 'Poppins_600SemiBold',
+  },
+  image: {
+    marginTop: 20,
+    alignSelf: 'center',
   },
 });
 
