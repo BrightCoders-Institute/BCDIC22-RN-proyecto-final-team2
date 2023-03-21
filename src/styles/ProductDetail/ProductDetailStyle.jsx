@@ -9,12 +9,12 @@ export const productDetailStyle = StyleSheet.create({
     marginTop: 15,
   },
   textReview: {
-    color: "#fff",
+    color: COLORS.WHITE,
     fontSize: 22,
     marginLeft: 20,
   },
   arrowIcon: {
     marginRight: 20,
-    color: "white",
+    color: COLORS.WHITE,
   },
 });
