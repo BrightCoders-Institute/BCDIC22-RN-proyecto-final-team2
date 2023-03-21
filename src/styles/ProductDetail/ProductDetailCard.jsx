@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../colors";
 
-export const productDetailStyle = StyleSheet.create({
+export const productDetailCard = StyleSheet.create({
   cardContainer: {
     backgroundColor: COLORS.WHITE,
     borderRadius: 20,
@@ -23,7 +23,7 @@ export const productDetailStyle = StyleSheet.create({
     fontSize: 15,
     width: 180,
     padding: 12,
-    color: "gray",
+    color: COLORS.GRAY,
   },
   starContainer: {
     alignSelf: "flex-start",
@@ -40,7 +40,6 @@ export const productDetailStyle = StyleSheet.create({
     marginVertical: 8,
   },
   buttonBuy: {
-    top: 20,
     marginLeft: 10,
     width: 120,
     height: 30,
@@ -49,20 +48,22 @@ export const productDetailStyle = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 20,
-    marginTop: 20,
+    marginTop: 15,
   },
   buttonAddToCart: {
-    top: 35,
     marginLeft: 10,
     width: 120,
     height: 30,
     backgroundColor: COLORS.WHITE,
+    borderRadius: 20,
+    borderColor: COLORS.DARK_PURPLE,
+    borderWidth: 2,
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 20,
-    borderColor: "black",
-    borderWidth: 1,
+    marginTop: 15,
     flexDirection: "row",
   },
+  containerStyle: { backgroundColor: COLORS.PURPLE, height: "100%", flex: 1 },
 });
