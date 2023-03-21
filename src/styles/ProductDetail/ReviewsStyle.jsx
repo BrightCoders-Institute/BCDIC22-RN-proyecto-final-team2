@@ -6,7 +6,7 @@ export const reviewStyle = StyleSheet.create({
     width: "90%",
     marginHorizontal: 20,
     height: 100,
-    backgroundColor: "rgba(255,255,255,0.5)",
+    backgroundColor: COLORS.WHITE50,
     borderRadius: 10,
     padding: 10,
     paddingLeft: 15,
@@ -18,6 +18,6 @@ export const reviewStyle = StyleSheet.create({
     fontWeight: "700",
     color: COLORS.DARK_PURPLE,
   },
-  description: { color: "rgba(255,255,255,0.7)", fontSize: 12 },
+  description: { color: COLORS.WHITE50, fontSize: 12 },
   date: { marginTop: "auto", color: COLORS.LIGHT_PURPLE },
 });
