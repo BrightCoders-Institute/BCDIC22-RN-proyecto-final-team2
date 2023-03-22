@@ -26,6 +26,7 @@ export default class Navigation extends Component {
         >
           <Stack.Screen name='NotLoggedNav' component={NotLoggedNav} />
           <Stack.Screen name='LoggedNav' component={LoggedNav} />
+
         </Stack.Navigator>
       </NavigationContainer>
     );
