@@ -11,8 +11,7 @@ export default class WishedCard extends Component {
     super(props);
     this.state = {
       isFavorite: false,
-      error: null,/* 
-      url: 'https://findgure.up.railway.app/api/product/favorite/', */
+      error: null,
     };
   }
   render() {
