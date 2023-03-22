@@ -63,6 +63,13 @@ export const elements = StyleSheet.create({
     fontSize: 11,
     fontFamily: 'Poppins_600SemiBold',
   },
+  textEdition: {
+    top: 5,
+    marginLeft: 10,
+    color: 'grey',
+    fontSize: 11,
+    fontFamily: 'Poppins_600SemiBold',
+  },
   productFranchise: {
     color: COLORS.GRAY,
     fontSize: 11,
@@ -76,6 +83,11 @@ export const elements = StyleSheet.create({
   },
   productCategory: {
     color: COLORS.GRAY,
+    fontSize: 11,
+    fontFamily: 'Poppins_600SemiBold',
+  },
+  productReviewsCount: {
+    color: 'grey',
     fontSize: 11,
     fontFamily: 'Poppins_600SemiBold',
   },
