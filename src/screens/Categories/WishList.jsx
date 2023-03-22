@@ -51,7 +51,7 @@ export default class Wishlist extends Component {
     const data = this.state.wished;
     return (
       
-      <View /* style={{ ...containers.productsContainer, marginTop: 0 }} */>
+      <View>
         <Text style={titles.maintitle}> Wishlist </Text>
         <FlatList
         style={containers.listWishlist}
