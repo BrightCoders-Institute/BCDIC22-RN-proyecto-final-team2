@@ -11,4 +11,5 @@ export const COLORS = {
   DARKSLATE_BLUE: '#483d8b',
   RED: '#ff0000',
   GOLD: '#ffd700',
+  WHITE50: "rgba(255,255,255,0.5)",
 };
