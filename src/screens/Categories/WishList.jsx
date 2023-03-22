@@ -1,94 +1,74 @@
-import {Text, View, FlatList, ScrollView, SectionList, StyleSheet,} from "react-native";
-  import React, { Component } from "react";
-  import { containers } from "../../styles/WishlistScreen/Screen_Wishlist";
-  import { titles } from "../../styles/WishlistScreen/Screen_Wishlist";
-  import WishedCard from "../../components/WishedCard";
-  
-  const sections = [
-    {
-      title: "Wishlist",
-      data: [
-        {
-          name: "Iron Man",
-          edition: "#65f",
-          rating: 3.5,
-          price: 99.99,
-          reviews: 125,
-          image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-        },
-        {
-          name: "Iron Man",
-          edition: "#65f",
-          rating: 5,
-          price: 49.99,
-          reviews: 205,
-          image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-        },
-        {
-          name: "Iron Man",
-          edition: "#65f",
-          rating: 3.5,
-          price: 99.99,
-          reviews: 125,
-          image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-        },
-        {
-          name: "Iron Man",
-          edition: "#65f",
-          rating: 3.5,
-          price: 99.99,
-          reviews: 125,
-          image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-        },
-        {
-          name: "Iron Man",
-          edition: "#65f",
-          rating: 3.5,
-          price: 99.99,
-          reviews: 125,
-          image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-        },
-        {
-          name: "Iron Man",
-          edition: "#65f",
-          rating: 3.5,
-          price: 99.99,
-          reviews: 125,
-          image: "https://findgure.s3.amazonaws.com/products/AlexG_1.png",
-        },
-      ],
-    },
-  ];
-  
-  export default class Wishlist extends Component {
-    constructor(props) {
-      super(props);
-    }
-  
-    render() {
-      return (
-        <View style={containers.bgContainer}>
-          <Text style={titles.titleFranchise}>Wishlist</Text>
-            <SectionList
-              sections={sections}
-              keyExtractor={(item, index) => item + index}
-              renderItem={({ item }) => {
-                return (                  
-                    <FlatList
-                      horizontal={true}
-                      showsHorizontalScrollIndicator={false}
-                      contentContainerStyle={containers.productsContainer}
-                      data={[item]}
-                      ItemSeparatorComponent={() => (
-                        <View style={containers.itemSeparator} />
-                      )}
-                      renderItem={({ item }) => <WishedCard product={item} />}
-                    />
-                      );
-              }}
-            />
-        </View>
-      );
-    }
+import {
+  Text,
+  View,
+  FlatList,
+  ScrollView,
+  SectionList,
+  StyleSheet,
+} from "react-native";
+import React, { Component } from "react";
+import { containers } from "../../styles/WishlistScreen/Screen_Wishlist";
+import { titles } from "../../styles/WishlistScreen/Screen_Wishlist";
+import WishedCard from "../../components/WishedCard";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import ProductCard from "../../components/ProductCard";
+
+export default class Wishlist extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = { wished: [], isLoading: false };
   }
-  
+
+  async getWishlist() {
+    this.setState({ isLoading: true });
+    const token = "Token " + (await AsyncStorage.getItem("token"));
+    
+    const config = {
+      method: "GET",
+      headers: {
+        Authorization: token,
+      },
+    };
+    try {
+      const response = await fetch(
+        "https://findgure.up.railway.app/api/product/favorite",
+        config
+      );
+      const data = await response.json();
+      
+      this.setState({ wished: data.favorites });
+      
+    } catch (e) {}
+    this.setState({ isLoading: false });
+  }
+
+  async UNSAFE_componentWillMount() {
+    await this.getWishlist();
+  }
+
+  render() {
+    const data = this.state.wished;
+    return (
+      
+      <View /* style={{ ...containers.productsContainer, marginTop: 0 }} */>
+        <Text style={titles.maintitle}> Wishlist </Text>
+        <FlatList
+        style={containers.listWishlist}
+          data={data}
+          keyExtractor={(item) => item.id}
+          ItemSeparatorComponent={() => <View style={containers.itemSeparator} />}
+          renderItem={({ item }) => (
+            <WishedCard
+              name={item.name}
+              rating={item.rating}
+              price={item.price}
+              image={item.image}
+              franchise={item.franchise.name}
+            />
+          )}
+        />
+      </View>
+    );
+  }
+}

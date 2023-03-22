@@ -19,13 +19,16 @@ export const containers = StyleSheet.create({
     marginRight: Dimensions.get("screen").height / 2,
   },
   itemSeparator: {
-    width: 20,
+    height: 20,
+  },
+  listWishlist:{
+    top: 30,
   },
 });
 
 export const titles = StyleSheet.create({
   maintitle: {
-    top: 45,
+    top: 15,
     left: 30,
     color: COLORS.WHITE,
     fontSize: 26,

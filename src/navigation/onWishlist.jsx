@@ -21,7 +21,6 @@ export default class OnWishlist extends Component {
   }
 
   render() {
-    console.log(this.state.search);
     return (
       <Stack.Navigator
         initialRouteName='Wishlist'

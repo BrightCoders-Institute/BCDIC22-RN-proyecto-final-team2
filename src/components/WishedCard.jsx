@@ -11,6 +11,8 @@ export default class WishedCard extends Component {
     super(props);
     this.state = {
       isFavorite: false,
+      error: null,/* 
+      url: 'https://findgure.up.railway.app/api/product/favorite/', */
     };
   }
   render() {
@@ -23,7 +25,7 @@ export default class WishedCard extends Component {
         });
         }} */
         >
-          <Image style={elements.productImage} source={{ uri: this.props.product.image }} />
+          <Image style={elements.productImage} source={{ uri: this.props.image }} />
         </TouchableOpacity>
         <View>
           <TouchableOpacity
@@ -34,26 +36,33 @@ export default class WishedCard extends Component {
             <FontAwesome
               name={this.state.isFavorite ? 'heart' : 'heart-o'}
               size={24}
-              color='crimson'
+              color={COLORS.DARK_PURPLE}
               style={elements.favoriteIcon}
             />
           </TouchableOpacity>
 
-          <Text style={elements.productTitle}>{this.props.product.name}</Text>
-          <Text style={elements.textEdition}>
-            Edition: {this.props.product.edition}
+          <Text style={elements.productTitle}>
+            {this.props.name.length > 10
+              ? this.props.name.substring(0, 7) + '...'
+              : this.props.name}
+          </Text>
+          
+          <Text style={elements.textFranchise}>
+            Franchise:{' '}
+            <Text style={elements.productFranchise}>
+              {this.props.franchise.length > 10
+                ? this.props.franchise.substring(0, 10) + '...'
+                : this.props.franchise}
+            </Text>
           </Text>
           <AirbnbRating
             showRating={false}
             size={15}
-            defaultRating={this.props.product.rating}
+            defaultRating={this.props.rating}
             isDisabled={true}
             starContainerStyle={elements.productRating}
           />
-          <Text style={elements.textCategory}>
-            <Text style={elements.productReviewsCount}>{this.props.product.reviews} reviews</Text>
-          </Text>
-          <Text style={elements.productPrice}>$ {this.props.product.price}</Text>
+          <Text style={elements.productPrice}>$ {this.props.price}</Text>
           <TouchableOpacity onButtonPress style={containers.buttonBuy}>
             <Text style={elements.textButtonBuy}>Buy Now</Text>
           </TouchableOpacity>
