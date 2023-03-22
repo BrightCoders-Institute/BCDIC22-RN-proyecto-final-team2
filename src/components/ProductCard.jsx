@@ -1,12 +1,12 @@
 import { Text, View, TouchableOpacity, Image, Pressable } from 'react-native';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { AirbnbRating } from 'react-native-ratings';
 import { COLORS } from '../styles/colors';
 import { containers } from '../styles/HomeScreen/Components_ProductCard';
 import { elements } from '../styles/HomeScreen/Components_ProductCard';
 
-export default class ProductCard extends PureComponent {
+export default class ProductCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
