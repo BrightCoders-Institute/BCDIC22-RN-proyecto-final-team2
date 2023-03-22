@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { COLORS } from "../colors";
+import { StyleSheet } from 'react-native';
+import { COLORS } from '../colors';
 
 export const containers = StyleSheet.create({
   mainContainer: {
@@ -7,11 +7,11 @@ export const containers = StyleSheet.create({
     borderRadius: 20,
     height: 250,
     width: 300,
-    alignItems: "center",
-    alignSelf: "center",
-    alignContent: "center",
-    flexDirection: "column",
-    flexWrap: "wrap",
+    alignItems: 'center',
+    alignSelf: 'center',
+    alignContent: 'center',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
   },
   buttonBuy: {
     top: 20,
@@ -19,9 +19,9 @@ export const containers = StyleSheet.create({
     width: 120,
     height: 30,
     backgroundColor: COLORS.DARK_PURPLE,
-    alignContent: "center",
-    justifyContent: "center",
-    alignItems: "center",
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 20,
   },
   buttonAddToCart: {
@@ -30,13 +30,13 @@ export const containers = StyleSheet.create({
     width: 120,
     height: 30,
     backgroundColor: COLORS.WHITE,
-    alignContent: "center",
-    justifyContent: "center",
-    alignItems: "center",
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 20,
-    borderColor: "black",
+    borderColor: COLORS.DARK_PURPLE,
     borderWidth: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
 });
 
@@ -46,7 +46,7 @@ export const elements = StyleSheet.create({
     height: 180,
     marginLeft: 10,
     marginTop: 30,
-    resizeMode: "contain",
+    resizeMode: 'contain',
   },
   favoriteIcon: {
     marginLeft: 125,
@@ -55,13 +55,13 @@ export const elements = StyleSheet.create({
   productTitle: {
     marginLeft: 10,
     fontSize: 22,
-    fontFamily: "Inter_700Bold",
+    fontFamily: 'Inter_700Bold',
   },
   textFranchise: {
     top: 5,
     marginLeft: 10,
     fontSize: 11,
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: 'Poppins_600SemiBold',
   },
   textEdition: {
     top: 5,
@@ -71,20 +71,20 @@ export const elements = StyleSheet.create({
     fontFamily: 'Poppins_600SemiBold',
   },
   productFranchise: {
-    color: "grey",
+    color: COLORS.GRAY,
     fontSize: 11,
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: 'Poppins_600SemiBold',
   },
   textCategory: {
     top: 5,
     marginLeft: 10,
     fontSize: 11,
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: 'Poppins_600SemiBold',
   },
   productCategory: {
-    color: "grey",
+    color: COLORS.GRAY,
     fontSize: 11,
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: 'Poppins_600SemiBold',
   },
   productReviewsCount: {
     color: 'grey',
@@ -99,17 +99,17 @@ export const elements = StyleSheet.create({
     top: 9,
     marginLeft: 10,
     fontSize: 14,
-    fontFamily: "Inter_700Bold",
+    fontFamily: 'Inter_700Bold',
   },
   textButtonBuy: {
-    color: "white",
+    color: COLORS.WHITE,
     fontSize: 14,
-    fontFamily: "Inter_500Medium",
+    fontFamily: 'Inter_500Medium',
   },
   textButtonAddToCart: {
     color: COLORS.DARK_PURPLE,
     fontSize: 14,
-    fontFamily: "Inter_500Medium",
+    fontFamily: 'Inter_500Medium',
   },
   cartIcon: {
     left: 5,

@@ -1,18 +1,15 @@
 import { TextInput, View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import { containers, stylesCheckout, titles } from '../styles/CheckoutScreen/Screen_Checkout';
+import { containers, stylesCheckout, titles } from '../../styles/CheckoutScreen/Screen_Checkout';
 import { Formik } from 'formik';
 import { MaterialIcons } from '@expo/vector-icons';
-import { COLORS } from '../styles/colors';
+import { COLORS } from '../../styles/colors';
 
 export default function Checkout() {
   return (
-    <ScrollView>
-      <View style={containers.bgContainer}>
-        <Image
-          source={require('../resources/checkoutNavigator.png')}
-          style={{ marginTop: 20, alignSelf: 'center' }}
-        />
+    <View style={containers.bgContainer}>
+      <Image source={require('../../resources/checkoutNavigator.png')} style={titles.image} />
+      <ScrollView>
         <Text style={titles.maintitle}>Enter your address:</Text>
         <Formik
           initialValues={{
@@ -104,7 +101,7 @@ export default function Checkout() {
             </>
           )}
         </Formik>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
