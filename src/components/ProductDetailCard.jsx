@@ -16,6 +16,8 @@ import Reviews from "../components/DetailScreen/Reviews";
 import { productDetailCard } from "../styles/ProductDetail/ProductDetailCard";
 import { Feather } from "@expo/vector-icons";
 import { productDetailStyle } from "../styles/ProductDetail/ProductDetailStyle";
+import ReviewThisProduct from "./DetailScreen/ReviewThisProduct";
+import Loading from "./Loading";
 
 import {
   Collapse,
@@ -26,6 +28,7 @@ const ProductDetailCard = () => {
   const [isActive, setIsActive] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [details, setDetails] = useState("");
+  const [reviewAdded, setReviewAdded] = useState(false);
 
   async function fetchProductDetails() {
     try {
@@ -36,13 +39,13 @@ const ProductDetailCard = () => {
       setDetails(data);
       return data;
     } catch (error) {
-      Alert.alert(error);
+      throw error;
     }
   }
 
   useEffect(() => {
     fetchProductDetails();
-  }, []);
+  }, [reviewAdded]);
 
   return (
     <>
@@ -116,7 +119,9 @@ const ProductDetailCard = () => {
           </View>
         </View>
       ) : (
-        <Text>Loading...</Text>
+        <View style={productDetailCard.cardContainer}>
+          <Loading />
+        </View>
       )}
 
       {/* Reviews */}
@@ -131,7 +136,10 @@ const ProductDetailCard = () => {
             />
           </CollapseHeader>
           <CollapseBody>
-            <ScrollView>
+            <ScrollView
+              horizontal={true}
+              contentContainerStyle={productDetailStyle.flatListContainerStyle}
+            >
               <FlatList
                 data={details.reviews}
                 keyExtractor={(review) => review.user}
@@ -158,6 +166,11 @@ const ProductDetailCard = () => {
           </CollapseBody>
         </Collapse>
       )}
+      <ReviewThisProduct
+        product_id={details?.id}
+        setReviewAdded={setReviewAdded}
+        reviewAdded={reviewAdded}
+      />
     </>
   );
 };

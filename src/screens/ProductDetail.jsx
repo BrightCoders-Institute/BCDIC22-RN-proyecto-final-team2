@@ -6,7 +6,7 @@ import { productDetailCard as style } from "../styles/ProductDetail/ProductDetai
 export default function ProductDetail() {
   return (
     <SafeAreaView style={style.containerStyle}>
-      <ScrollView>
+      <ScrollView horizontal={false}>
         <ProductDetailCard />
       </ScrollView>
     </SafeAreaView>

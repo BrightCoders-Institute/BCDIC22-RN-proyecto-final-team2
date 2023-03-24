@@ -8,6 +8,7 @@ export const productDetailStyle = StyleSheet.create({
     alignItems: "center",
     marginTop: 15,
   },
+  flatListContainerStyle: { width: "100%", height: "100%" },
   textReview: {
     color: COLORS.WHITE,
     fontSize: 22,
