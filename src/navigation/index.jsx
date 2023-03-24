@@ -5,6 +5,9 @@ import { StatusBar } from 'expo-status-bar';
 import { COLORS } from '../styles/colors';
 import LoggedNav from './loggedNav';
 import NotLoggedNav from './notLoggedNav';
+
+import WishConfirm from '../components/WishConfirm';
+
 import { navTheme } from '../theme/themes';
 
 const Stack = createNativeStackNavigator();
@@ -19,13 +22,14 @@ export default class Navigation extends Component {
       <NavigationContainer theme={navTheme}>
         <StatusBar style='light' backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName='NotLoggedNav'
+          initialRouteName='WishConfirm'
           screenOptions={{
             headerShown: false,
           }}
         >
           <Stack.Screen name='NotLoggedNav' component={NotLoggedNav} />
           <Stack.Screen name='LoggedNav' component={LoggedNav} />
+          <Stack.Screen name='WishConfirm' component={WishConfirm} />
 
         </Stack.Navigator>
       </NavigationContainer>
