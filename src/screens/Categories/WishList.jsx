@@ -1,29 +1,18 @@
-import {
-  Text,
-  View,
-  FlatList,
-  ScrollView,
-  SectionList,
-  StyleSheet,
-} from "react-native";
-import React, { Component } from "react";
+import { Text, View, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
 import { containers } from "../../styles/WishlistScreen/Screen_Wishlist";
 import { titles } from "../../styles/WishlistScreen/Screen_Wishlist";
 import WishedCard from "../../components/WishedCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import ProductCard from "../../components/ProductCard";
+import Loading from "../../components/Loading";
 
-export default class Wishlist extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.state = { wished: [], isLoading: false };
-  }
+export const WishList = () => {
+  const [list, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  async getWishlist() {
-    this.setState({ isLoading: true });
+  const fetchData = async () => {
+    setIsLoading(true);
     const token = "Token " + (await AsyncStorage.getItem("token"));
-    
     const config = {
       method: "GET",
       headers: {
@@ -35,29 +24,33 @@ export default class Wishlist extends Component {
         "https://findgure.up.railway.app/api/product/favorite",
         config
       );
-      const data = await response.json();
-      
-      this.setState({ wished: data.favorites });
-      
-    } catch (e) {}
-    this.setState({ isLoading: false });
-  }
+      const { favorites } = await response.json();
+      setList(favorites);
+    } catch (error) {
+      setIsLoading(false);
+    }
+    setIsLoading(false);
+  };
 
-  async UNSAFE_componentWillMount() {
-    await this.getWishlist();
-  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  render() {
-    const data = this.state.wished;
-    return (
-      
-      <View>
-        <Text style={titles.maintitle}> Wishlist </Text>
+  return (
+    <View>
+      <Text style={titles.maintitle}> Wishlist </Text>
+      {isLoading ? (
+        <View style={{height: '100%'}}>
+          <Loading />
+        </View>
+      ) : (
         <FlatList
-        style={containers.listWishlist}
-          data={data}
+          style={containers.listWishlist}
+          data={list}
           keyExtractor={(item) => item.id}
-          ItemSeparatorComponent={() => <View style={containers.itemSeparator} />}
+          ItemSeparatorComponent={() => (
+            <View style={containers.itemSeparator} />
+          )}
           renderItem={({ item }) => (
             <WishedCard
               name={item.name}
@@ -68,7 +61,7 @@ export default class Wishlist extends Component {
             />
           )}
         />
-      </View>
-    );
-  }
-}
+      )}
+    </View>
+  );
+};

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Wishlist from '../screens/Categories/WishList';
+import {WishList} from '../screens/Categories/WishList';
 import Franchises from '../screens/Categories/Franchises';
 import { FontAwesome5, AntDesign } from '@expo/vector-icons';
 import SearchInput from '../components/SearchInput';
@@ -44,7 +44,7 @@ export default class OnWishlist extends Component {
           headerTitleAlign: 'center',
         }}
       >
-        <Stack.Screen name='Wishlist' component={Wishlist} />
+        <Stack.Screen name='Wishlist' component={WishList} />
 
       </Stack.Navigator>
     );

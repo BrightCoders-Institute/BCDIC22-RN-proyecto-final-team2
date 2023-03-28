@@ -13,4 +13,5 @@ export const COLORS = {
   GOLD: '#ffd700',
   PURPLEPINK: '#f9c2ff',
   WHITE50: "rgba(255,255,255,0.5)",
+  GREEN: "#00aa22"
 };

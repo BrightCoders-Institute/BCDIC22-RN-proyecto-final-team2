@@ -13,8 +13,10 @@ export const ConfirmedWish = StyleSheet.create({
     color: COLORS.GRAY,
     height: 53,
     backgroundColor: COLORS.WHITE,
-    marginHorizontal: 10,
-    borderRadius: 10,
+    marginHorizontal: 15,
+    borderRadius: 25,
     shadowColor: COLORS.LIGHT_GRAY,
   },
+  added:{color: COLORS.GREEN},
+  removed:{color: COLORS.RED},
 })
