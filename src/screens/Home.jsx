@@ -1,11 +1,18 @@
-import { Text, View, FlatList, ScrollView } from 'react-native';
-import React, { Component } from 'react';
-import ProductCard from '../components/ProductCard';
-import CarouselSlider from '../components/CarouselSlider';
-import { containers } from '../styles/HomeScreen/Screen_Home';
-import { elements } from '../styles/HomeScreen/Screen_Home';
-import Loading from '../components/Loading';
-export default class Home extends Component {
+import {
+  Text,
+  View,
+  FlatList,
+  ScrollView,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
+import React, { Component, PureComponent } from "react";
+import ProductCard from "../components/ProductCard";
+import CarouselSlider from "../components/CarouselSlider";
+import { containers } from "../styles/HomeScreen/Screen_Home";
+import { elements } from "../styles/HomeScreen/Screen_Home";
+import Loading from "../components/Loading";
+export default class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,12 +23,12 @@ export default class Home extends Component {
 
   getProducts() {
     this.setState({ isLoading: true });
-    fetch('https://findgure.up.railway.app/api/products')
+    fetch("https://findgure.up.railway.app/api/products")
       .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error('Something went wrong ...');
+          throw new Error("Something went wrong ...");
         }
       })
       .then((data) => {
@@ -40,30 +47,46 @@ export default class Home extends Component {
       <View style={containers.bgContainer}>
         <ScrollView>
           <Text style={elements.titleBestSellers}>
-            Take a look at... {'\n'}
+            Take a look at... {"\n"}
             <Text style={elements.subtitleBestSellers}>The best sellers</Text>
           </Text>
-          {products.length > 0 ? <CarouselSlider products={products} /> : <Loading />}
+          {products.length > 0 ? (
+            <CarouselSlider products={products} />
+          ) : (
+            <Loading />
+          )}
 
           <Text style={elements.titleRecentlyAdded}>Our recently added</Text>
           {products.length > 0 ? (
             <FlatList
+              initialNumToRender={5}
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={containers.productsContainer}
               data={products}
               keyExtractor={(item) => item.id}
-              ItemSeparatorComponent={() => <View style={containers.itemSeparator} />}
+              ItemSeparatorComponent={() => (
+                <View style={containers.itemSeparator} />
+              )}
               renderItem={({ item: product }) => {
                 return (
-                  <ProductCard
-                    id={product.id}
-                    name={product.name}
-                    franchise={product.franchise.name}
-                    price={product.price}
-                    rating={product.rating}
-                    image={product.image}
-                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.props.navigation.navigate("OnProductDetail", {
+                        screen: "ProductDetail",
+                        params: { id: product.id },
+                      });
+                    }}
+                  >
+                    <ProductCard
+                      id={product.id}
+                      name={product.name}
+                      franchise={product.franchise.name}
+                      price={product.price}
+                      rating={product.rating}
+                      image={product.image}
+                    />
+                  </TouchableOpacity>
                 );
               }}
             />
