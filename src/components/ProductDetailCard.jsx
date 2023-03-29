@@ -128,7 +128,6 @@ const ProductDetailCard = ({ id }) => {
         </View>
       )}
 
-      {/* Reviews */}
       {details && (
         <Collapse isExpanded={isActive} onToggle={() => setIsActive(!isActive)}>
           <CollapseHeader style={productDetailStyle.collapseHeader}>

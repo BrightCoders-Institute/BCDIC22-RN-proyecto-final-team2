@@ -6,7 +6,6 @@ import { COLORS } from "../styles/colors";
 import LoggedNav from "./loggedNav";
 import NotLoggedNav from "./notLoggedNav";
 import { navTheme } from "../theme/themes";
-import ProductDetail from "../screens/ProductDetail";
 
 const Stack = createNativeStackNavigator();
 
