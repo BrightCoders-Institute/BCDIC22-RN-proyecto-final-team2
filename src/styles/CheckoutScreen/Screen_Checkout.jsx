@@ -1,5 +1,5 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import { COLORS } from '../colors';
+import { StyleSheet, Dimensions } from "react-native";
+import { COLORS } from "../colors";
 
 export const containers = StyleSheet.create({
   bgContainer: {
@@ -13,20 +13,20 @@ export const titles = StyleSheet.create({
     left: 30,
     color: COLORS.WHITE,
     fontSize: 26,
-    fontFamily: 'Poppins_600SemiBold',
+    fontFamily: "Poppins_600SemiBold",
   },
   image: {
     marginTop: 20,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
 });
 
 export const stylesCheckout = StyleSheet.create({
   containerFields: {
     marginTop: 40,
-    width: '85%',
-    alignSelf: 'center',
-    justifyContent: 'space-evenly',
+    width: "85%",
+    alignSelf: "center",
+    justifyContent: "space-evenly",
   },
   input: {
     backgroundColor: COLORS.WHITE,
@@ -40,18 +40,18 @@ export const stylesCheckout = StyleSheet.create({
   },
   continueButton: {
     marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "center",
+    justifyContent: "space-between",
     backgroundColor: COLORS.GOLD,
     borderRadius: 20,
-    width: '85%',
+    width: "85%",
     padding: 10,
   },
   textButton: {
-    textAlign: 'center',
-    fontFamily: 'Poppins_600SemiBold',
+    textAlign: "center",
+    fontFamily: "Poppins_600SemiBold",
     fontSize: 20,
     flex: 1,
   },

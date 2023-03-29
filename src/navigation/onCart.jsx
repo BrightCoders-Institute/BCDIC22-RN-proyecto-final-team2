@@ -47,7 +47,7 @@ export default class OnCart extends Component {
       >
         <Stack.Screen name="Checkout" component={Checkout} />
 
-        <Stack.Screen name="Checkout2" component={Checkout2} />
+        {/* <Stack.Screen name="Checkout2" component={Checkout2} /> */}
       </Stack.Navigator>
     );
   }

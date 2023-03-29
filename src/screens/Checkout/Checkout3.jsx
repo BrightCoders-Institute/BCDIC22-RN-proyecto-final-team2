@@ -7,7 +7,7 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS } from "../../styles/colors";
 
-export default function Checkout3() {
+export default function Checkout3({ navigation }) {
   return (
     <View>
       <Image
@@ -20,7 +20,7 @@ export default function Checkout3() {
           Your order has been placed {"\n"} You will receive an email invoice
         </Text>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate("Home")}
+          onPress={() => navigation.navigate("OnHome")}
           style={stylesCheckout.continueButton}
         >
           <Text style={stylesCheckout.textButton}>Keep shopping</Text>

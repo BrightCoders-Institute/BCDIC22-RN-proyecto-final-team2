@@ -6,12 +6,9 @@ import OnCart from "./onCart";
 import OnWishlist from "./onWishlist";
 import { FontAwesome5, FontAwesome, AntDesign } from "@expo/vector-icons";
 import UserProfile from "../screens/UserProfile";
-import Checkout from "../screens/Checkout/Checkout1";
-import Checkout2 from "../screens/Checkout/Checkout2";
 import Cart from "../screens/Cart";
-
+import OnCheckout from "./onCheckout";
 const Tab = createBottomTabNavigator();
-
 export default class LoggedNav extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +17,7 @@ export default class LoggedNav extends Component {
   render() {
     return (
       <Tab.Navigator
-        initialRouteName="Checkout2"
+        initialRouteName="OnCheckout"
         screenOptions={{
           tabBarShowLabel: false,
           headerShown: false,
@@ -58,60 +55,6 @@ export default class LoggedNav extends Component {
         />
 
         <Tab.Screen
-          name="Checkout"
-          component={Checkout}
-          options={{
-            headerShown: true,
-            tabBarButton: () => null,
-            headerLeft: (props) => (
-              <FontAwesome5
-                onPress={() => this.props.navigation.navigate("UserProfile")}
-                name="user-circle"
-                style={{ marginLeft: 15 }}
-                size={30}
-                color={props.tintColor}
-              />
-            ),
-            headerRight: (props) => (
-              <AntDesign
-                onPress={() => this.props.navigation.navigate("Cart")}
-                name="shoppingcart"
-                size={30}
-                style={{ marginRight: 15 }}
-                color={props.tintColor}
-              />
-            ),
-          }}
-        />
-
-        <Tab.Screen
-          name="Checkout2"
-          component={Checkout2}
-          options={{
-            headerShown: true,
-            tabBarButton: () => null,
-            headerLeft: (props) => (
-              <FontAwesome5
-                onPress={() => this.props.navigation.navigate("UserProfile")}
-                name="user-circle"
-                style={{ marginLeft: 15 }}
-                size={30}
-                color={props.tintColor}
-              />
-            ),
-            headerRight: (props) => (
-              <AntDesign
-                onPress={() => this.props.navigation.navigate("Cart")}
-                name="shoppingcart"
-                size={30}
-                style={{ marginRight: 15 }}
-                color={props.tintColor}
-              />
-            ),
-          }}
-        />
-
-        <Tab.Screen
           name="UserProfile"
           component={UserProfile}
           options={{
@@ -142,6 +85,31 @@ export default class LoggedNav extends Component {
           component={Cart}
           options={{
             headerShown: true,
+            tabBarButton: () => null,
+            headerLeft: (props) => (
+              <FontAwesome5
+                onPress={() => this.props.navigation.navigate("UserProfile")}
+                name="user-circle"
+                style={{ marginLeft: 15 }}
+                size={30}
+                color={props.tintColor}
+              />
+            ),
+            headerRight: (props) => (
+              <AntDesign
+                name="shoppingcart"
+                size={30}
+                style={{ marginRight: 15 }}
+                color={props.tintColor}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="OnCheckout"
+          component={OnCheckout}
+          options={{
+            headerShown: false,
             tabBarButton: () => null,
             headerLeft: (props) => (
               <FontAwesome5
