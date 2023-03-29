@@ -5,6 +5,8 @@ import CarouselSlider from '../components/CarouselSlider';
 import { containers } from '../styles/HomeScreen/Screen_Home';
 import { elements } from '../styles/HomeScreen/Screen_Home';
 import Loading from '../components/Loading';
+import SearchDropdown from '../components/SearchDropdown';
+import SearchInput from '../components/SearchInput';
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +40,7 @@ export default class Home extends Component {
     const { products, error, isLoading } = this.state;
     return (
       <View style={containers.bgContainer}>
+        {/* <SearchInput onSearch={this.state.onSearch} /> */}
         <ScrollView>
           <Text style={elements.titleBestSellers}>
             Take a look at... {'\n'}
@@ -70,6 +73,7 @@ export default class Home extends Component {
           ) : (
             <Loading />
           )}
+          {this.props.searching && <SearchDropdown dataSource={this.props.filtered} />}
         </ScrollView>
       </View>
     );

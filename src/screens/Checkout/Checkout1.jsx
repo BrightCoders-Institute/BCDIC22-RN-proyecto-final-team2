@@ -92,8 +92,9 @@ export default function Checkout() {
               </View>
               <TouchableOpacity
                 style={stylesCheckout.continueButton}
-                onPress={handleSubmit}
-                disabled={isSubmitting}
+                onPress={() => {
+                  this.props.navigation.navigate('Checkout2');
+                }}
               >
                 <Text style={stylesCheckout.textButton}>Continue</Text>
                 <MaterialIcons name='navigate-next' size={30} color='black' />
