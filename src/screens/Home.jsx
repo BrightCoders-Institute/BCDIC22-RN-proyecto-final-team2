@@ -5,33 +5,58 @@ import CarouselSlider from '../components/CarouselSlider';
 import { containers } from '../styles/HomeScreen/Screen_Home';
 import { elements } from '../styles/HomeScreen/Screen_Home';
 import Loading from '../components/Loading';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
+      favorites: [],
       error: null,
     };
   }
 
-  getProducts() {
+  async getProducts() {
     this.setState({ isLoading: true });
-    fetch('https://findgure.up.railway.app/api/products')
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Something went wrong ...');
-        }
-      })
-      .then((data) => {
-        this.setState({ products: data });
-      })
-      .catch((error) => this.setState({ error, isLoading: false }));
+
+    await fetch('https://findgure.up.railway.app/api/product/favorite', 
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Token " + (await AsyncStorage.getItem("token"))
+      }
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong ...');
+      }
+    }).then((data) => {
+      // we have a array of objects, we need to map it to an array of ids
+      data = data.favorites.map((item) => item.id);
+      this.setState({ favorites: data });
+    }).catch((error) => this.setState({ error, isLoading: false }));
+
+    await fetch('https://findgure.up.railway.app/api/products')
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong ...');
+      }
+    })
+    .then((data) => {
+      this.setState({ products: data, favorites: this.state.favorites });
+    })
+    .catch((error) => this.setState({ error, isLoading: false }));
+
+
   }
 
-  componentDidMount() {
-    this.getProducts();
+  async componentDidMount() {
+    await this.getProducts();
   }
 
   render() {
@@ -63,6 +88,7 @@ export default class Home extends Component {
                     price={product.price}
                     rating={product.rating}
                     image={product.image}
+                    favorite={this.state.favorites.includes(product.id)}
                   />
                 );
               }}

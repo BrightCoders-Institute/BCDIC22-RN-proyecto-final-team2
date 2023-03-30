@@ -23,7 +23,7 @@ export default class Navigation extends Component {
       <NavigationContainer theme={navTheme}>
         <StatusBar style='light' backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName='WishRmConfirm'
+          initialRouteName='NotLoggedNav'
           screenOptions={{
             headerShown: false,
           }}

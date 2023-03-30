@@ -5,12 +5,13 @@ import { AirbnbRating } from 'react-native-ratings';
 import { COLORS } from '../styles/colors';
 import { containers } from '../styles/HomeScreen/Components_ProductCard';
 import { elements } from '../styles/HomeScreen/Components_ProductCard';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default class ProductCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFavorite: false,
+      isFavorite: props.favorite
     };
   }
   render() {
@@ -21,8 +22,28 @@ export default class ProductCard extends Component {
         </Pressable>
         <View>
           <Pressable
-            onPress={() => {
-              this.setState({ isFavorite: !this.state.isFavorite });
+            onPress={async () => {
+              
+
+              /* fav={this.state.isFavorite ?  : } */
+              const token = "Token " + (await AsyncStorage.getItem("token"));
+              const { id } = this.props;
+              const config = {
+                method: "POST",
+                headers: {
+                  Authorization: token,
+                },
+              };
+              fetch(`https://findgure.up.railway.app/api/product/favorite/${id}/`,
+                  config
+                ).then((res) => {
+                    console.log(res.status)
+                }).catch((err) => {
+                    console.log(err);
+                });
+
+                this.setState({ isFavorite: !this.state.isFavorite })
+
             }}
           >
             <FontAwesome
