@@ -81,6 +81,7 @@ export default class Home extends PureComponent {
                     <ProductCard
                       id={product.id}
                       name={product.name}
+                      category={product.franchise.category}
                       franchise={product.franchise.name}
                       price={product.price}
                       rating={product.rating}

@@ -16,6 +16,7 @@
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/native-stack": "^6.9.8",
+    "@reduxjs/toolkit": "^1.9.3",
     "accordion-collapse-react-native": "^1.1.1",
     "expo": "~47.0.12",
     "expo-font": "~11.0.1",
@@ -31,6 +32,7 @@
     "react-native-paper": "^5.2.0",
     "react-native-ratings": "^8.1.0",
     "react-native-screens": "~3.18.0",
+    "react-redux": "^8.0.5",
     "yup": "^1.0.2"
   },
   "devDependencies": {
