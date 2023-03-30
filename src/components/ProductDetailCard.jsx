@@ -18,13 +18,15 @@ import { Feather } from "@expo/vector-icons";
 import { productDetailStyle } from "../styles/ProductDetail/ProductDetailStyle";
 import ReviewThisProduct from "./DetailScreen/ReviewThisProduct";
 import Loading from "./Loading";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Collapse,
   CollapseHeader,
   CollapseBody,
 } from "accordion-collapse-react-native";
-const ProductDetailCard = () => {
+
+const ProductDetailCard = ({ id }) => {
   const [isActive, setIsActive] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [details, setDetails] = useState("");
@@ -33,7 +35,7 @@ const ProductDetailCard = () => {
   async function fetchProductDetails() {
     try {
       const response = await fetch(
-        "https://findgure.up.railway.app/api/product/detail/2/"
+        `https://findgure.up.railway.app/api/product/detail/${id}/`
       );
       const data = await response.json();
       setDetails(data);
@@ -45,7 +47,7 @@ const ProductDetailCard = () => {
 
   useEffect(() => {
     fetchProductDetails();
-  }, [reviewAdded]);
+  }, [reviewAdded, id]);
 
   return (
     <>
@@ -92,7 +94,9 @@ const ProductDetailCard = () => {
               numberOfLines={10}
               style={productDetailCard.descriptionProduct}
             >
-              {details.description}
+              {details.description.length > 125
+                ? details.description.substring(0, 125) + "..."
+                : details.description}
             </Text>
             <AirbnbRating
               showRating={false}
