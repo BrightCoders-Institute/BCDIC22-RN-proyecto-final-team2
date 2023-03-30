@@ -1,40 +1,22 @@
 import React, { Component } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/Home";
 import { FontAwesome5, AntDesign } from "@expo/vector-icons";
-import UserProfile from "../screens/UserProfile";
-import SearchInput from "../components/SearchInput";
-import Cart from "../screens/Cart";
 
+import ProductDetail from "../screens/ProductDetail";
 const Stack = createNativeStackNavigator();
 
-export default class OnHome extends Component {
+export default class OnProductDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      search: "",
-    };
-    this.changeText = this.changeText.bind(this);
-  }
-
-  changeText(text) {
-    this.setState({ ...this.props.state, search: text });
   }
 
   render() {
     return (
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="ProductDetail"
         screenOptions={{
+          headerShown: false,
           headerBackVisible: false,
-          headerShown: true,
-          headerTitle: () => (
-            <SearchInput
-              onSearch={(text) => this.changeText(text)}
-              value={this.state.search}
-            />
-          ),
-          headerTitleAlign: "center",
           headerLeft: (props) => (
             <FontAwesome5
               onPress={() => this.props.navigation.navigate("UserProfile")}
@@ -53,13 +35,7 @@ export default class OnHome extends Component {
           ),
         }}
       >
-        <Stack.Screen name="Home" component={Home} />
-
-        <Stack.Screen name="PurchaseProcess" component={Home} />
-
-        <Stack.Screen name="UserProfile" component={UserProfile} />
-
-        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="ProductDetail" component={ProductDetail} />
       </Stack.Navigator>
     );
   }
