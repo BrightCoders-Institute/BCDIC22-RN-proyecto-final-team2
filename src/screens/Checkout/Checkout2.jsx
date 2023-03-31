@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import { MaterialIcons } from '@expo/vector-icons';
 import { COLORS } from '../../styles/colors';
 
-export default function Checkout() {
+export default function Checkout2() {
   return (
     <View style={containers.bgContainer}>
       <Image source={require('../../resources/checkoutNavigator2.png')} style={titles.image} />
