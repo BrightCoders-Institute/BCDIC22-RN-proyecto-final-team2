@@ -27,26 +27,19 @@ export default class WishedCard extends Component {
           <Image style={elements.productImage} source={{ uri: this.props.image }} />
         </TouchableOpacity>
         <View>
-          <TouchableOpacity
-            onPress={() => {
-              this.setState({ isFavorite: !this.state.isFavorite });
-            }}
-          >
-            <FontAwesome
-              name={this.state.isFavorite ? 'heart' : 'heart-o'}
+          <FontAwesome
               size={24}
               color={COLORS.DARK_PURPLE}
               style={elements.favoriteIcon}
             />
-          </TouchableOpacity>
-
+          
           <Text style={elements.productTitle}>
             {this.props.name.length > 10
               ? this.props.name.substring(0, 7) + '...'
               : this.props.name}
           </Text>
           
-          <Text style={elements.textFranchise}>
+          <Text style={elements.textFranchise} >
             Franchise:{' '}
             <Text style={elements.productFranchise}>
               {this.props.franchise.length > 10

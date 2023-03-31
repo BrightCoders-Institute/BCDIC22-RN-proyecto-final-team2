@@ -24,16 +24,20 @@ export default class ProductCard extends Component {
           <Pressable
             onPress={async () => {
               
-
-              /* fav={this.state.isFavorite ?  : } */
               const token = "Token " + (await AsyncStorage.getItem("token"));
               const { id } = this.props;
               const config = {
-                method: "POST",
-                headers: {
-                  Authorization: token,
-                },
-              };
+                  headers: {
+                    Authorization: token,
+                  },
+                };  
+
+              if (!this.state.isFavorite) {
+                config.method = "POST"
+              } else {
+                config.method = "DELETE"
+              }
+
               fetch(`https://findgure.up.railway.app/api/product/favorite/${id}/`,
                   config
                 ).then((res) => {
@@ -41,7 +45,6 @@ export default class ProductCard extends Component {
                 }).catch((err) => {
                     console.log(err);
                 });
-
                 this.setState({ isFavorite: !this.state.isFavorite })
 
             }}
