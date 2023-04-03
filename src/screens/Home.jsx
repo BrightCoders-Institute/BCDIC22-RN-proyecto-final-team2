@@ -58,14 +58,25 @@ export default class Home extends Component {
               ItemSeparatorComponent={() => <View style={containers.itemSeparator} />}
               renderItem={({ item: product }) => {
                 return (
-                  <ProductCard
-                    id={product.id}
-                    name={product.name}
-                    franchise={product.franchise.name}
-                    price={product.price}
-                    rating={product.rating}
-                    image={product.image}
-                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.props.navigation.navigate("OnProductDetail", {
+                        screen: "ProductDetail",
+                        params: { id: product.id },
+                      });
+                    }}
+                  >
+                    <ProductCard
+                      id={product.id}
+                      name={product.name}
+                      category={product.franchise.category}
+                      franchise={product.franchise.name}
+                      price={product.price}
+                      rating={product.rating}
+                      image={product.image}
+                    />
+                  </TouchableOpacity>
+
                 );
               }}
             />

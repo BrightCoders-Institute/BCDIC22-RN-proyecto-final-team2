@@ -50,7 +50,8 @@ export default class ProductCard extends Component {
             </Text>
           </Text>
           <Text style={elements.textCategory}>
-            Category: <Text style={elements.productCategory}>My category</Text>
+            Category:{" "}
+            <Text style={elements.productCategory}>{this.props.category}</Text>
           </Text>
           <AirbnbRating
             showRating={false}
