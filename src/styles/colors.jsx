@@ -4,6 +4,7 @@ export const COLORS = {
   LIGHT_PURPLE: '#503669',
   BRIGHT_PURPLE: '#7419CF',
   DARK_PURPLE: '#170029',
+  EXTRALIGHT_PURPLE: '#7F6892',
   WHITE: '#FFFFFF',
   GRAY: '#424242',
   LIGHT_GRAY: '#d3d3d3',
@@ -12,5 +13,5 @@ export const COLORS = {
   RED: '#ff0000',
   GOLD: '#ffd700',
   PURPLEPINK: '#f9c2ff',
-  WHITE50: "rgba(255,255,255,0.5)",
+  WHITE50: 'rgba(255,255,255,0.5)',
 };

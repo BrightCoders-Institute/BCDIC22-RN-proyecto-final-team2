@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Checkout from "../screens/Checkout/Checkout1";
-import Checkout2 from "../screens/Checkout/Checkout2";
-import Cart from "../screens/Cart";
-import { FontAwesome5, AntDesign } from "@expo/vector-icons";
-import UserProfile from "../screens/UserProfile";
-import SearchInput from "../components/SearchInput";
+import React, { Component } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { FontAwesome5, AntDesign } from '@expo/vector-icons';
+import SearchInput from '../components/SearchInput';
+import Cart from '../screens/Cart';
+import Checkout from '../screens/Checkout/Checkout1';
+import Checkout2 from '../screens/Checkout/Checkout2';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,38 +15,34 @@ export default class OnCart extends Component {
   render() {
     return (
       <Stack.Navigator
-        initialRouteName="Cart"
+        initialRouteName='Cart'
         screenOptions={{
-          headerShown: true,
+          headerShown: false,
           headerBackVisible: false,
           headerLeft: (props) => (
             <FontAwesome5
-              name="user-circle"
-              onPress={() => this.props.navigation.navigate("UserProfile")}
+              onPress={() => this.props.navigation.navigate('UserProfile')}
+              name='user-circle'
               size={30}
               color={props.tintColor}
             />
           ),
           headerRight: (props) => (
             <AntDesign
-              onPress={() => this.props.navigation.navigate("Cart")}
-              name="shoppingcart"
+              onPress={() => this.props.navigation.navigate('Cart')}
+              name='shoppingcart'
               size={30}
               color={props.tintColor}
             />
           ),
-          headerTitle: () => (
-            <SearchInput
-              onSearch={(text) => this.changeText(text)}
-              value={this.state.search}
-            />
-          ),
-          headerTitleAlign: "center",
         }}
       >
-        <Stack.Screen name="Checkout" component={Checkout} />
+        <Stack.Screen name='Cart' component={Cart} />
 
-        {/* <Stack.Screen name="Checkout2" component={Checkout2} /> */}
+        <Stack.Screen name='Checkout' component={Checkout} />
+
+        <Stack.Screen name='Checkout2' component={Checkout2} />
+
       </Stack.Navigator>
     );
   }

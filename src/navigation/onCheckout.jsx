@@ -34,10 +34,12 @@ export default class OnCheckout extends Component {
           ),
         }}
       >
+
         <Stack.Screen name="Checkout1" component={Checkout1} />
         <Stack.Screen name="Checkout2" component={Checkout2} />
         <Stack.Screen name="Checkout3" component={Checkout3} />
         <Stack.Screen name="Home" component={OnHome} />
+
       </Stack.Navigator>
     );
   }

@@ -1,44 +1,34 @@
-import {
-  Text,
-  View,
-  FlatList,
-  ScrollView,
-  SectionList,
-  StyleSheet,
-} from "react-native";
-import React, { Component } from "react";
-import { containers } from "../../styles/WishlistScreen/Screen_Wishlist";
-import { titles } from "../../styles/WishlistScreen/Screen_Wishlist";
-import WishedCard from "../../components/WishedCard";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import ProductCard from "../../components/ProductCard";
+import { Text, View, FlatList, ScrollView, SectionList, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { containers } from '../../styles/WishlistScreen/Screen_Wishlist';
+import { titles } from '../../styles/WishlistScreen/Screen_Wishlist';
+import WishedCard from '../../components/WishedCard';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import ProductCard from '../../components/ProductCard';
+import SearchDropdown from '../../components/SearchDropdown';
 
 export default class Wishlist extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = { wished: [], isLoading: false };
   }
 
   async getWishlist() {
     this.setState({ isLoading: true });
-    const token = "Token " + (await AsyncStorage.getItem("token"));
-    
+    const token = 'Token ' + (await AsyncStorage.getItem('token'));
+
     const config = {
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: token,
       },
     };
     try {
-      const response = await fetch(
-        "https://findgure.up.railway.app/api/product/favorite",
-        config
-      );
+      const response = await fetch('https://findgure.up.railway.app/api/product/favorite', config);
       const data = await response.json();
-      
+
       this.setState({ wished: data.favorites });
-      
     } catch (e) {}
     this.setState({ isLoading: false });
   }
@@ -50,11 +40,10 @@ export default class Wishlist extends Component {
   render() {
     const data = this.state.wished;
     return (
-      
       <View>
         <Text style={titles.maintitle}> Wishlist </Text>
         <FlatList
-        style={containers.listWishlist}
+          style={containers.listWishlist}
           data={data}
           keyExtractor={(item) => item.id}
           ItemSeparatorComponent={() => <View style={containers.itemSeparator} />}
@@ -68,6 +57,7 @@ export default class Wishlist extends Component {
             />
           )}
         />
+        {this.props.searching && <SearchDropdown dataSource={this.props.filtered} />}
       </View>
     );
   }
