@@ -21,10 +21,7 @@ export default function ReviewThisProduct({
 
   const addReview = async () => {
     try {
-      // Get the token from AsyncStorage
       const token = await AsyncStorage.getItem("token");
-
-      // Set up the POST request
       const requestOptions = {
         method: "POST",
         headers: {
@@ -37,14 +34,12 @@ export default function ReviewThisProduct({
         }),
       };
 
-      // Make the POST request
       const response = await fetch(
         `https://findgure.up.railway.app/api/product/review/${product_id}/`,
         requestOptions
       );
       const data = await response.json();
       if (!response.ok) {
-        // If the response status code is not in the 200s, throw an error
         data.message
           ? setErrorMessage(data.message)
           : setErrorMessage("Make sure to provide a rating and review!");

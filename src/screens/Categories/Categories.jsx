@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CategoriesCard from '../../components/CategoriesCard';
 import { containers } from '../../styles/CategoriesScreen/Screen_Categories';
 import { elements } from '../../styles/CategoriesScreen/Screen_Categories';
+import SearchDropdown from '../../components/SearchDropdown';
 
 export default class Categories extends Component {
   constructor(props) {
@@ -62,6 +63,7 @@ export default class Categories extends Component {
             <Text style={elements.loadingText}>Loading...</Text>
           </View>
         )}
+        {this.props.searching && <SearchDropdown dataSource={this.props.filtered} />}
       </View>
     );
   }

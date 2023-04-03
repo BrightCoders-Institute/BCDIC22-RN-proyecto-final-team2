@@ -6,7 +6,8 @@ import { COLORS } from "../styles/colors";
 import LoggedNav from "./loggedNav";
 import NotLoggedNav from "./notLoggedNav";
 import { navTheme } from "../theme/themes";
-import ProductDetail from "../screens/ProductDetail";
+import Checkout from "../screens/Checkout/Checkout1";
+import Checkout2 from "../screens/Checkout/Checkout2";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,15 +19,17 @@ export default class Navigation extends Component {
   render() {
     return (
       <NavigationContainer theme={navTheme}>
-        <StatusBar style="light" backgroundColor={COLORS.DARK_PURPLE} />
+        <StatusBar style='light' backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName="LoggedNav"
+
+          initialRouteName='LoggedNav'
+
           screenOptions={{
             headerShown: false,
           }}
         >
-          <Stack.Screen name="NotLoggedNav" component={NotLoggedNav} />
-          <Stack.Screen name="LoggedNav" component={LoggedNav} />
+          <Stack.Screen name='NotLoggedNav' component={NotLoggedNav} />
+          <Stack.Screen name='LoggedNav' component={LoggedNav} />
         </Stack.Navigator>
       </NavigationContainer>
     );
