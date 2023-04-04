@@ -33,7 +33,6 @@ export default class Franchises extends Component {
       }
     })
     .then((data) => {
-      // we have a array of objects, we need to map it to an array of ids
       data = data.favorites.map((item) => item.id);
       this.setState({ favorites: data });
     })

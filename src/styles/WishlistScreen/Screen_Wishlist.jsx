@@ -5,7 +5,6 @@ import { COLORS } from "../colors";
 export const containers = StyleSheet.create({
   bgContainer: {
     backgroundColor: COLORS.PURPLE,
-    /* height: Dimensions.get("window").height - 500, */
     justifyContent: "space-evenly",
   },
   productsContainer: {

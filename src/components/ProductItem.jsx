@@ -6,10 +6,8 @@ import { COLORS } from "../styles/colors";
 import { containers } from "../styles/HomeScreen/Components_ProductCard";
 import { elements } from "../styles/HomeScreen/Components_ProductCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// import { useToast } from "native-base";
 
 export const ProductItem = ({ product, isFavorite }) => {
-  // const toast = useToast();
   const [favorite, setFavorite] = useState(isFavorite);
   const { name, franchise, category, image, id, rating, price } = product;
 

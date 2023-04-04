@@ -11,7 +11,6 @@ export const WishList = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = async () => {
-    console.log("entranding")
     setIsLoading(true);
     const token = "Token " + (await AsyncStorage.getItem("token"));
     const config = {
