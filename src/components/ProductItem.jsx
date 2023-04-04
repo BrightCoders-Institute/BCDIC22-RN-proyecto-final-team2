@@ -22,14 +22,14 @@ export const ProductItem = ({ product, isFavorite }) => {
       },
       method: !favorite ? "POST" : "DELETE",
     };
-    const message = !favorite ? "agregado a" : "eliminado de";
+    const message = !favorite ? "added to" : "removed from";
 
     try {
       await fetch(
         `https://findgure.up.railway.app/api/product/favorite/${id}/`,
         config
       );
-      ToastAndroid.show("El producto fue exitosamente " + message + " la lista de deseados", ToastAndroid.LONG);
+      ToastAndroid.show("The product was succesfully " + message + " your wishlist", ToastAndroid.LONG);
       setFavorite(!favorite);
     } catch (e) {
       ToastAndroid.show(e.toString(), ToastAndroid.LONG);
