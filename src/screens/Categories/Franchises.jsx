@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { containers } from "../../styles/FranchisesScreen/Screen_Franchises";
 import { titles } from "../../styles/FranchisesScreen/Screen_Franchises";
 import { ProductItem } from "../../components/ProductItem";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default class Franchises extends Component {
   constructor(props) {
@@ -13,8 +14,31 @@ export default class Franchises extends Component {
     };
   }
 
-  componentDidMount() {
+  async getProducts() {
+    this.setState({ isLoading: true });
     const { id } = this.props.route.params;
+
+    await fetch("https://findgure.up.railway.app/api/product/favorite", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Token " + (await AsyncStorage.getItem("token")),
+      },
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Something went wrong ...");
+      }
+    })
+    .then((data) => {
+      // we have a array of objects, we need to map it to an array of ids
+      data = data.favorites.map((item) => item.id);
+      this.setState({ favorites: data });
+    })
+    .catch((error) => this.setState({ error, isLoading: false }));
+
     fetch(`https://findgure.up.railway.app/api/franchises/${id}`)
       .then((response) => {
         if (response.ok) {
@@ -24,10 +48,16 @@ export default class Franchises extends Component {
         }
       })
       .then((data) => {
-        this.setState({ data: data });
+        this.setState({ data: data,products: data, favorites: this.state.favorites  });
       })
       .catch((error) => this.setState({ error, isLoading: false }));
+
   }
+
+  async componentDidMount() {
+    await this.getProducts();
+  }
+
   render() {
     const { category } = this.props.route.params;
     const { data } = this.state;
@@ -52,9 +82,9 @@ export default class Franchises extends Component {
                     ItemSeparatorComponent={() => (
                       <View style={containers.itemSeparator} />
                     )}
-                    renderItem={({ item }) => {
+                    renderItem={({ item:product }) => {
                       return (
-                        <ProductItem product={item} isFavorite={true} />
+                        <ProductItem product={product} isFavorite={this.state.favorites.includes(product.id)} />
                       );
                     }}
                   />
