@@ -4,9 +4,6 @@ import { COLORS } from '../colors';
 
 export const containers = StyleSheet.create({
   bgContainer: {
-    marginTop: Constants.statusBarHeight,
-    backgroundColor: COLORS.PURPLE,
-    height: Dimensions.get('screen').height,
     justifyContent: 'space-evenly',
     paddingHorizontal: 15,
     flex: 1,
@@ -34,7 +31,7 @@ export const titles = StyleSheet.create({
     color: COLORS.WHITE,
     fontSize: 25,
     fontFamily: 'Poppins_600SemiBold',
-    bottom: 10,
+    top: 10,
   },
   titleFranchise: {
     color: COLORS.WHITE,

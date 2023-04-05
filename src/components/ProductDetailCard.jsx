@@ -16,33 +16,38 @@ import Reviews from "../components/DetailScreen/Reviews";
 import { productDetailCard } from "../styles/ProductDetail/ProductDetailCard";
 import { Feather } from "@expo/vector-icons";
 import { productDetailStyle } from "../styles/ProductDetail/ProductDetailStyle";
+import ReviewThisProduct from "./DetailScreen/ReviewThisProduct";
+import Loading from "./Loading";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Collapse,
   CollapseHeader,
   CollapseBody,
 } from "accordion-collapse-react-native";
-const ProductDetailCard = () => {
+
+const ProductDetailCard = ({ id }) => {
   const [isActive, setIsActive] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [details, setDetails] = useState("");
+  const [reviewAdded, setReviewAdded] = useState(false);
 
   async function fetchProductDetails() {
     try {
       const response = await fetch(
-        "https://findgure.up.railway.app/api/product/detail/2/"
+        `https://findgure.up.railway.app/api/product/detail/${id}/`
       );
       const data = await response.json();
       setDetails(data);
       return data;
     } catch (error) {
-      Alert.alert(error);
+      throw error;
     }
   }
 
   useEffect(() => {
     fetchProductDetails();
-  }, []);
+  }, [reviewAdded, id]);
 
   return (
     <>
@@ -89,7 +94,9 @@ const ProductDetailCard = () => {
               numberOfLines={10}
               style={productDetailCard.descriptionProduct}
             >
-              {details.description}
+              {details.description.length > 125
+                ? details.description.substring(0, 125) + "..."
+                : details.description}
             </Text>
             <AirbnbRating
               showRating={false}
@@ -116,10 +123,11 @@ const ProductDetailCard = () => {
           </View>
         </View>
       ) : (
-        <Text>Loading...</Text>
+        <View style={productDetailCard.cardContainer}>
+          <Loading />
+        </View>
       )}
 
-      {/* Reviews */}
       {details && (
         <Collapse isExpanded={isActive} onToggle={() => setIsActive(!isActive)}>
           <CollapseHeader style={productDetailStyle.collapseHeader}>
@@ -131,7 +139,10 @@ const ProductDetailCard = () => {
             />
           </CollapseHeader>
           <CollapseBody>
-            <ScrollView>
+            <ScrollView
+              horizontal={true}
+              contentContainerStyle={productDetailStyle.flatListContainerStyle}
+            >
               <FlatList
                 data={details.reviews}
                 keyExtractor={(review) => review.user}
@@ -158,6 +169,11 @@ const ProductDetailCard = () => {
           </CollapseBody>
         </Collapse>
       )}
+      <ReviewThisProduct
+        product_id={details?.id}
+        setReviewAdded={setReviewAdded}
+        reviewAdded={reviewAdded}
+      />
     </>
   );
 };

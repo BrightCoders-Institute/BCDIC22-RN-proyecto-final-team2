@@ -4,6 +4,7 @@ import { containers } from "../../styles/FranchisesScreen/Screen_Franchises";
 import { titles } from "../../styles/FranchisesScreen/Screen_Franchises";
 import { ProductItem } from "../../components/ProductItem";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SearchDropdown from '../../components/SearchDropdown';
 
 export default class Franchises extends Component {
   constructor(props) {
@@ -92,6 +93,7 @@ export default class Franchises extends Component {
             );
           }}
         />
+        {this.props.searching && <SearchDropdown dataSource={this.props.filtered} />}
       </View>
     );
   }

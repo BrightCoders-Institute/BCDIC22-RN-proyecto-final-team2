@@ -7,6 +7,8 @@ import Loading from "../components/Loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductItem } from "../components/ProductItem";
 
+import SearchDropdown from '../components/SearchDropdown';
+import SearchInput from '../components/SearchInput';
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -86,16 +88,27 @@ export default class Home extends Component {
               )}
               renderItem={({ item: product }) => {
                 return (
-                  <ProductItem
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.props.navigation.navigate("OnProductDetail", {
+                        screen: "ProductDetail",
+                        params: { id: product.id },
+                      });
+                    }}
+                  >
+                    <ProductItem
                     product={product}
                     isFavorite={this.state.favorites.includes(product.id)}
-                  />
+                    />
+                  </TouchableOpacity>
+
                 );
               }}
             />
           ) : (
             <Loading />
           )}
+          {this.props.searching && <SearchDropdown dataSource={this.props.filtered} />}
         </ScrollView>
       </View>
     );

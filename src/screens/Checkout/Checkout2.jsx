@@ -1,36 +1,50 @@
-import { TextInput, View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { containers, stylesCheckout, titles } from '../../styles/CheckoutScreen/Screen_Checkout2';
-import { Formik } from 'formik';
-import { MaterialIcons } from '@expo/vector-icons';
-import { COLORS } from '../../styles/colors';
+import {
+  TextInput,
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  containers,
+  stylesCheckout,
+  titles,
+} from "../../styles/CheckoutScreen/Screen_Checkout2";
+import { Formik } from "formik";
+import { MaterialIcons } from "@expo/vector-icons";
+import { COLORS } from "../../styles/colors";
 
-export default function Checkout() {
+export default function Checkout2({ navigation }) {
   return (
     <View style={containers.bgContainer}>
-      <Image source={require('../../resources/checkoutNavigator2.png')} style={titles.image} />
+      <Image
+        source={require("../../resources/checkoutNavigator2.png")}
+        style={titles.image}
+      />
       <ScrollView>
         <Text style={titles.maintitle}>Enter your card details:</Text>
         <Formik
           initialValues={{
-            cardNumber: '',
-            expiration: '',
-            cvv: '',
-            cardHolder: '',
+            cardNumber: "",
+            expiration: "",
+            cvv: "",
+            cardHolder: "",
           }}
           validate={(values) => {
             const errors = {};
             if (!values.cardNumber) {
-              errors.cardNumber = 'Required!';
+              errors.cardNumber = "Required!";
             }
             if (!values.expiration) {
-              errors.expiration = 'Required!';
+              errors.expiration = "Required!";
             }
             if (!values.cvv) {
-              errors.cvv = 'Required!';
+              errors.cvv = "Required!";
             }
             if (!values.cardHolder) {
-              errors.cardHolder = 'Required!';
+              errors.cardHolder = "Required!";
             }
             return errors;
           }}
@@ -41,16 +55,24 @@ export default function Checkout() {
             }, 400);
           }}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
             <>
               <View style={stylesCheckout.containerFields}>
                 <View style={stylesCheckout.containerFieldsFirstLast}>
                   <TextInput
                     style={stylesCheckout.input}
-                    placeholder='Card number (16 digits)'
+                    placeholder="Card number (16 digits)"
                     placeholderTextColor={COLORS.LIGHT_GRAY}
-                    onChangeText={handleChange('cardNumber')}
-                    onBlur={handleBlur('cardNumber')}
+                    onChangeText={handleChange("cardNumber")}
+                    onBlur={handleBlur("cardNumber")}
                     value={values.cardNumber}
                   />
                   {touched.cardNumber && errors.cardNumber && (
@@ -61,10 +83,10 @@ export default function Checkout() {
                   <View style={stylesCheckout.containerFieldExpiration}>
                     <TextInput
                       style={stylesCheckout.inputMedium}
-                      placeholder={'Expiration\n(mm/yyyy)'}
+                      placeholder={"Expiration\n(mm/yyyy)"}
                       placeholderTextColor={COLORS.LIGHT_GRAY}
-                      onChangeText={handleChange('expiration')}
-                      onBlur={handleBlur('expiration')}
+                      onChangeText={handleChange("expiration")}
+                      onBlur={handleBlur("expiration")}
                       value={values.expiration}
                     />
                     {touched.expiration && errors.expiration && (
@@ -74,13 +96,13 @@ export default function Checkout() {
                   <View style={stylesCheckout.containerFieldCvv}>
                     <TextInput
                       style={stylesCheckout.inputMedium}
-                      placeholder={'CVV\n(XXX)'}
+                      placeholder={"CVV\n(XXX)"}
                       placeholderTextColor={COLORS.LIGHT_GRAY}
-                      onChangeText={handleChange('cvv')}
-                      onBlur={handleBlur('cvv')}
+                      onChangeText={handleChange("cvv")}
+                      onBlur={handleBlur("cvv")}
                       value={values.cvv}
                     />
-                    {touched.cvv && <errors className='cvv'></errors> && (
+                    {touched.cvv && <errors className="cvv"></errors> && (
                       <Text style={stylesCheckout.error}>{errors.cvv}</Text>
                     )}
                   </View>
@@ -88,14 +110,16 @@ export default function Checkout() {
                 <View style={stylesCheckout.containerFieldsFirstLast}>
                   <TextInput
                     style={stylesCheckout.input}
-                    placeholder='Card Holder (Full name)'
+                    placeholder="Card Holder (Full name)"
                     placeholderTextColor={COLORS.LIGHT_GRAY}
-                    onChangeText={handleChange('cardHolder')}
-                    onBlur={handleBlur('cardHolder')}
+                    onChangeText={handleChange("cardHolder")}
+                    onBlur={handleBlur("cardHolder")}
                     value={values.cardHolder}
                   />
                   {touched.cardHolder && errors.cardHolder && (
-                    <Text style={stylesCheckout.error}>{errors.cardHolder}</Text>
+                    <Text style={stylesCheckout.error}>
+                      {errors.cardHolder}
+                    </Text>
                   )}
                 </View>
               </View>
@@ -119,11 +143,11 @@ export default function Checkout() {
               </View>
               <TouchableOpacity
                 style={stylesCheckout.continueButton}
-                onPress={handleSubmit}
+                onPress={() => navigation.navigate("Checkout3")}
                 disabled={isSubmitting}
               >
                 <Text style={stylesCheckout.textButton}>Place order</Text>
-                <MaterialIcons name='navigate-next' size={30} color='black' />
+                <MaterialIcons name="navigate-next" size={30} color="black" />
               </TouchableOpacity>
             </>
           )}

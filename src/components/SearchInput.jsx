@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { containers } from '../styles/HomeScreen/Components_SearchInput';
 import { elements } from '../styles/HomeScreen/Components_SearchInput';
+import SearchDropdown from './SearchDropdown';
 
 export default class SearchInput extends Component {
   constructor(props) {

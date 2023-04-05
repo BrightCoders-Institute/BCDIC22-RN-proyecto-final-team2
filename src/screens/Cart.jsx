@@ -26,7 +26,12 @@ export default class Cart extends Component {
             );
           }}
         />
-        <TouchableOpacity style={containers.buttonContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate('Checkout');
+          }}
+          style={containers.buttonContainer}
+        >
           <Text style={elements.buttonText}>Checkout</Text>
           <MaterialIcons name='navigate-next' size={30} color={COLORS.DARK_PURPLE} />
         </TouchableOpacity>

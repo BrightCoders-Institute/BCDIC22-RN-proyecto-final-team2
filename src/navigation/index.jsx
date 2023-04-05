@@ -20,14 +20,15 @@ export default class Navigation extends Component {
       <NavigationContainer theme={navTheme}>
         <StatusBar style='light' backgroundColor={COLORS.DARK_PURPLE} />
         <Stack.Navigator
-          initialRouteName='NotLoggedNav'
+
+          initialRouteName='LoggedNav'
+
           screenOptions={{
             headerShown: false,
           }}
         >
           <Stack.Screen name='NotLoggedNav' component={NotLoggedNav} />
           <Stack.Screen name='LoggedNav' component={LoggedNav} />
-
         </Stack.Navigator>
       </NavigationContainer>
     );

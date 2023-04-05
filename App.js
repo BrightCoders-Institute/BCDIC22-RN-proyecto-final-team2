@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
+import { Provider } from 'react-redux';
+import store from "./src/store";
 import { StyleSheet, Text, View } from "react-native";
 import Navigation from "./src/navigation/index";
 import * as SplashScreen from "expo-splash-screen";
@@ -49,5 +51,10 @@ export default function App() {
     SplashScreen.hideAsync();
   }
 
-  return <Navigation />;
+  return (
+    <Provider store={store}>
+    <Navigation />
+    </Provider>
+  )
+ 
 }
