@@ -1,11 +1,10 @@
-import { Text, View, FlatList, ScrollView, SectionList, StyleSheet } from 'react-native';
+import { Text, View, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
 import { containers } from "../../styles/WishlistScreen/Screen_Wishlist";
 import { titles } from "../../styles/WishlistScreen/Screen_Wishlist";
 import WishedCard from "../../components/WishedCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loading from "../../components/Loading";
-import SearchDropdown from '../../components/SearchDropdown';
 
 export const WishList = () => {
   const [list, setList] = useState([]);
@@ -15,7 +14,7 @@ export const WishList = () => {
     setIsLoading(true);
     const token = "Token " + (await AsyncStorage.getItem("token"));
     const config = {
-      method: 'GET',
+      method: "GET",
       headers: {
         Authorization: token,
       },
@@ -63,7 +62,6 @@ export const WishList = () => {
           )}
         />
       )}
-      {this.props.searching && <SearchDropdown dataSource={this.props.filtered} />}
     </View>
   );
 };
