@@ -13,8 +13,6 @@ import { elements } from "../styles/HomeScreen/Screen_Home";
 import Loading from "../components/Loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductItem } from "../components/ProductItem";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
 import SearchDropdown from '../components/SearchDropdown';
 import SearchInput from '../components/SearchInput';
 export default class Home extends Component {
@@ -50,6 +48,7 @@ export default class Home extends Component {
       })
       .catch((error) => this.setState({ error, isLoading: false }));
 
+      await fetch("https://findgure.up.railway.app/api/products")
       .then((response) => {
         if (response.ok) {
           return response.json();

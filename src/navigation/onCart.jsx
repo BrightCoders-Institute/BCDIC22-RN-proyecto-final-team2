@@ -6,7 +6,6 @@ import Cart from "../screens/Cart";
 import Checkout from "../screens/Checkout/Checkout1";
 import Checkout2 from "../screens/Checkout/Checkout2";
 import Checkout3 from "../screens/Checkout/Checkout3";
-import OnHome from "./onHome";
 
 const Stack = createNativeStackNavigator();
 
