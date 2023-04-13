@@ -1,12 +1,18 @@
-import { Text, View, FlatList, ScrollView } from 'react-native';
-import React, { Component } from 'react';
-import ProductCard from '../components/ProductCard';
-import CarouselSlider from '../components/CarouselSlider';
-import { containers } from '../styles/HomeScreen/Screen_Home';
-import { elements } from '../styles/HomeScreen/Screen_Home';
-import Loading from '../components/Loading';
-import SearchDropdown from '../components/SearchDropdown';
-import SearchInput from '../components/SearchInput';
+import {
+  Text,
+  View,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import React, { Component } from "react";
+import ProductCard from "../components/ProductCard";
+import CarouselSlider from "../components/CarouselSlider";
+import { containers } from "../styles/HomeScreen/Screen_Home";
+import { elements } from "../styles/HomeScreen/Screen_Home";
+import Loading from "../components/Loading";
+import SearchDropdown from "../components/SearchDropdown";
+import SearchInput from "../components/SearchInput";
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +24,12 @@ export default class Home extends Component {
 
   getProducts() {
     this.setState({ isLoading: true });
-    fetch('https://findgure.up.railway.app/api/products')
+    fetch("https://findgure.up.railway.app/api/products")
       .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error('Something went wrong ...');
+          throw new Error("Something went wrong ...");
         }
       })
       .then((data) => {
@@ -42,10 +48,14 @@ export default class Home extends Component {
       <View style={containers.bgContainer}>
         <ScrollView>
           <Text style={elements.titleBestSellers}>
-            Take a look at... {'\n'}
+            Take a look at... {"\n"}
             <Text style={elements.subtitleBestSellers}>The best sellers</Text>
           </Text>
-          {products.length > 0 ? <CarouselSlider products={products} /> : <Loading />}
+          {products.length > 0 ? (
+            <CarouselSlider products={products} />
+          ) : (
+            <Loading />
+          )}
 
           <Text style={elements.titleRecentlyAdded}>Our recently added</Text>
           {products.length > 0 ? (
@@ -55,7 +65,9 @@ export default class Home extends Component {
               contentContainerStyle={containers.productsContainer}
               data={products}
               keyExtractor={(item) => item.id}
-              ItemSeparatorComponent={() => <View style={containers.itemSeparator} />}
+              ItemSeparatorComponent={() => (
+                <View style={containers.itemSeparator} />
+              )}
               renderItem={({ item: product }) => {
                 return (
                   <TouchableOpacity
@@ -76,14 +88,15 @@ export default class Home extends Component {
                       image={product.image}
                     />
                   </TouchableOpacity>
-
                 );
               }}
             />
           ) : (
             <Loading />
           )}
-          {this.props.searching && <SearchDropdown dataSource={this.props.filtered} />}
+          {this.props.searching && (
+            <SearchDropdown dataSource={this.props.filtered} />
+          )}
         </ScrollView>
       </View>
     );

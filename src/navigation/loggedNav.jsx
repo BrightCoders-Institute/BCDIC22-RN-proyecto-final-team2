@@ -19,41 +19,39 @@ export default class LoggedNav extends Component {
   render() {
     return (
       <Tab.Navigator
-
-        initialRouteName='OnHome'
-      
+        initialRouteName="OnHome"
         screenOptions={{
           tabBarShowLabel: false,
           headerShown: false,
-          headerTitle: '',
+          headerTitle: "",
         }}
       >
         <Tab.Screen
-          name='OnHome'
+          name="OnHome"
           component={OnHome}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <FontAwesome name={'home'} size={size} color={color} />
+              <FontAwesome name={"home"} size={size} color={color} />
             ),
           }}
         />
 
         <Tab.Screen
-          name='OnCategories'
+          name="OnCategories"
           component={OnCategories}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <FontAwesome name={'th-large'} size={size} color={color} />
+              <FontAwesome name={"th-large"} size={size} color={color} />
             ),
           }}
         />
 
         <Tab.Screen
-          name='OnWishlist'
+          name="OnWishlist"
           component={OnWishlist}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <FontAwesome name={'heart'} size={size} color={color} />
+              <FontAwesome name={"heart"} size={size} color={color} />
             ),
           }}
         />
@@ -117,8 +115,8 @@ export default class LoggedNav extends Component {
             tabBarButton: () => null,
             headerLeft: (props) => (
               <FontAwesome5
-                onPress={() => this.props.navigation.navigate('UserProfile')}
-                name='user-circle'
+                onPress={() => this.props.navigation.navigate("UserProfile")}
+                name="user-circle"
                 style={{ marginLeft: 15 }}
                 size={30}
                 color={props.tintColor}
@@ -126,7 +124,7 @@ export default class LoggedNav extends Component {
             ),
             headerRight: (props) => (
               <AntDesign
-                name='shoppingcart'
+                name="shoppingcart"
                 size={30}
                 style={{ marginRight: 15 }}
                 color={props.tintColor}
