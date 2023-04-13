@@ -1,5 +1,12 @@
-import { Text, View, FlatList, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import React, { Component } from "react";
+
 import CarouselSlider from "../components/CarouselSlider";
 import { containers } from "../styles/HomeScreen/Screen_Home";
 import { elements } from "../styles/HomeScreen/Screen_Home";
@@ -43,7 +50,6 @@ export default class Home extends Component {
       })
       .catch((error) => this.setState({ error, isLoading: false }));
 
-    await fetch("https://findgure.up.railway.app/api/products")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -102,14 +108,15 @@ export default class Home extends Component {
                     isFavorite={this.state.favorites.includes(product.id)}
                     />
                   </TouchableOpacity>
-
                 );
               }}
             />
           ) : (
             <Loading />
           )}
-          {this.props.searching && <SearchDropdown dataSource={this.props.filtered} />}
+          {this.props.searching && (
+            <SearchDropdown dataSource={this.props.filtered} />
+          )}
         </ScrollView>
       </View>
     );
