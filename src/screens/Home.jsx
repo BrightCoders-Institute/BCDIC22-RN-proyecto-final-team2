@@ -6,25 +6,37 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { Component } from "react";
-import ProductCard from "../components/ProductCard";
+
 import CarouselSlider from "../components/CarouselSlider";
 import { containers } from "../styles/HomeScreen/Screen_Home";
 import { elements } from "../styles/HomeScreen/Screen_Home";
 import Loading from "../components/Loading";
-import SearchDropdown from "../components/SearchDropdown";
-import SearchInput from "../components/SearchInput";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ProductItem } from "../components/ProductItem";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
+import SearchDropdown from '../components/SearchDropdown';
+import SearchInput from '../components/SearchInput';
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
+      favorites: [],
       error: null,
     };
   }
 
-  getProducts() {
+  async getProducts() {
     this.setState({ isLoading: true });
-    fetch("https://findgure.up.railway.app/api/products")
+
+    await fetch("https://findgure.up.railway.app/api/product/favorite", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Token " + (await AsyncStorage.getItem("token")),
+      },
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -33,13 +45,26 @@ export default class Home extends Component {
         }
       })
       .then((data) => {
-        this.setState({ products: data });
+        data = data.favorites.map((item) => item.id);
+        this.setState({ favorites: data });
+      })
+      .catch((error) => this.setState({ error, isLoading: false }));
+
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong ...");
+        }
+      })
+      .then((data) => {
+        this.setState({ products: data, favorites: this.state.favorites });
       })
       .catch((error) => this.setState({ error, isLoading: false }));
   }
 
-  componentDidMount() {
-    this.getProducts();
+  async componentDidMount() {
+    await this.getProducts();
   }
 
   render() {
@@ -78,14 +103,9 @@ export default class Home extends Component {
                       });
                     }}
                   >
-                    <ProductCard
-                      id={product.id}
-                      name={product.name}
-                      category={product.franchise.category}
-                      franchise={product.franchise.name}
-                      price={product.price}
-                      rating={product.rating}
-                      image={product.image}
+                    <ProductItem
+                    product={product}
+                    isFavorite={this.state.favorites.includes(product.id)}
                     />
                   </TouchableOpacity>
                 );

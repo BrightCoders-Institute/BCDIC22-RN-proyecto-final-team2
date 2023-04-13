@@ -5,7 +5,6 @@ import { COLORS } from "../colors";
 export const containers = StyleSheet.create({
   bgContainer: {
     backgroundColor: COLORS.PURPLE,
-    height: Dimensions.get("screen").height-170,
     justifyContent: "space-evenly",
   },
   productsContainer: {
@@ -22,6 +21,7 @@ export const containers = StyleSheet.create({
     height: 20,
   },
   listWishlist:{
+    height: Dimensions.get("screen").height - 270,
     top: 30,
   },
 });

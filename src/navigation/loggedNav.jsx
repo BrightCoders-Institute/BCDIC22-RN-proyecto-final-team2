@@ -30,6 +30,7 @@ export default class LoggedNav extends Component {
           name="OnHome"
           component={OnHome}
           options={{
+            unmountOnBlur:true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"home"} size={size} color={color} />
             ),
@@ -40,6 +41,7 @@ export default class LoggedNav extends Component {
           name="OnCategories"
           component={OnCategories}
           options={{
+            unmountOnBlur:true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"th-large"} size={size} color={color} />
             ),
@@ -50,6 +52,7 @@ export default class LoggedNav extends Component {
           name="OnWishlist"
           component={OnWishlist}
           options={{
+            unmountOnBlur:true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"heart"} size={size} color={color} />
             ),
@@ -64,6 +67,7 @@ export default class LoggedNav extends Component {
             tabBarButton: () => null,
             headerLeft: (props) => (
               <FontAwesome5
+                onPress={() => this.props.navigation.navigate("UserProfile")}
                 name="user-circle"
                 style={{ marginLeft: 15 }}
                 size={30}
@@ -99,6 +103,7 @@ export default class LoggedNav extends Component {
             ),
             headerRight: (props) => (
               <AntDesign
+                onPress={() => this.props.navigation.navigate("Cart")}
                 name="shoppingcart"
                 size={30}
                 style={{ marginRight: 15 }}

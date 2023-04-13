@@ -1,13 +1,12 @@
-import React, { Component } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StatusBar } from "expo-status-bar";
-import { COLORS } from "../styles/colors";
-import LoggedNav from "./loggedNav";
-import NotLoggedNav from "./notLoggedNav";
-import { navTheme } from "../theme/themes";
-import Checkout from "../screens/Checkout/Checkout1";
-import Checkout2 from "../screens/Checkout/Checkout2";
+import React, { Component } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'expo-status-bar';
+import { COLORS } from '../styles/colors';
+import LoggedNav from './loggedNav';
+import NotLoggedNav from './notLoggedNav';
+
+import { navTheme } from '../theme/themes';
 
 const Stack = createNativeStackNavigator();
 
