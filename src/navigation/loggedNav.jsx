@@ -37,6 +37,33 @@ export default class LoggedNav extends Component {
           }}
         />
 
+<Tab.Screen
+          name="OnProductDetail"
+          component={OnProductDetail}
+          options={{
+            headerShown: true,
+            headerBackVisible: false,
+            tabBarButton: () => null,
+            headerLeft: (props) => (
+              <FontAwesome5
+                onPress={() => this.props.navigation.navigate("UserProfile")}
+                name="user-circle"
+                style={{ marginLeft: 15 }}
+                size={30}
+                color={props.tintColor}
+              />
+            ),
+            headerRight: (props) => (
+              <AntDesign
+                name="shoppingcart"
+                size={30}
+                style={{ marginRight: 15 }}
+                color={props.tintColor}
+              />
+            ),
+          }}
+        />
+
         <Tab.Screen
           name="OnCategories"
           component={OnCategories}
