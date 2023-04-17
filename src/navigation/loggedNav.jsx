@@ -19,7 +19,7 @@ export default class LoggedNav extends Component {
   render() {
     return (
       <Tab.Navigator
-        initialRouteName="OnHome"
+        initialRouteName="UserProfile"
         screenOptions={{
           tabBarShowLabel: false,
           headerShown: false,
@@ -30,7 +30,7 @@ export default class LoggedNav extends Component {
           name="OnHome"
           component={OnHome}
           options={{
-            unmountOnBlur:true,
+            unmountOnBlur: true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"home"} size={size} color={color} />
             ),
@@ -41,7 +41,7 @@ export default class LoggedNav extends Component {
           name="OnCategories"
           component={OnCategories}
           options={{
-            unmountOnBlur:true,
+            unmountOnBlur: true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"th-large"} size={size} color={color} />
             ),
@@ -52,7 +52,7 @@ export default class LoggedNav extends Component {
           name="OnWishlist"
           component={OnWishlist}
           options={{
-            unmountOnBlur:true,
+            unmountOnBlur: true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"heart"} size={size} color={color} />
             ),
