@@ -84,16 +84,16 @@ export default class Franchises extends Component {
                     )}
                     renderItem={({ item:product }) => {
                       return (
-                      <TouchableOpacity
-                        onPress={() => {
-                          this.props.navigation.navigate("OnProductDetail", {
-                            screen: "ProductDetail",
-                            params: { id: product.id },
-                          });
-                        }}
-                      >
-                        <ProductItem product={product} isFavorite={this.state.favorites.includes(product.id)} />
-                  </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={() => {
+                            this.props.navigation.navigate("OnProductDetail", {
+                              screen: "ProductDetail",
+                              params: { id: product.id },
+                            });
+                          }}
+                        >
+                          <ProductItem product={product} isFavorite={this.state.favorites.includes(product.id)} />
+                        </TouchableOpacity>
                       );
                     }}
                   />

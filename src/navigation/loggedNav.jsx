@@ -37,7 +37,7 @@ export default class LoggedNav extends Component {
           }}
         />
 
-<Tab.Screen
+        <Tab.Screen
           name="OnProductDetail"
           component={OnProductDetail}
           options={{
