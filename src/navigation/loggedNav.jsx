@@ -19,7 +19,7 @@ export default class LoggedNav extends Component {
   render() {
     return (
       <Tab.Navigator
-        initialRouteName="UserProfile"
+        initialRouteName="OnHome"
         screenOptions={{
           tabBarShowLabel: false,
           headerShown: false,

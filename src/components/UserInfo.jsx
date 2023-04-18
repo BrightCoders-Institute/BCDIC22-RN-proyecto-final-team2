@@ -1,4 +1,4 @@
-import { Text, View, Dimensions, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, Dimensions, TouchableOpacity, TextInput, Pressable } from 'react-native';
 import React, { Component } from 'react';
 import { Ionicons, Octicons, Feather } from '@expo/vector-icons';
 import { COLORS } from '../styles/colors';
@@ -15,6 +15,7 @@ export default class UserInfo extends Component {
       domicileIsActive: false,
     };
   }
+
   render() {
     return (
       <View style={containers.mainContainer}>
@@ -54,13 +55,13 @@ export default class UserInfo extends Component {
               <List.Section>
                 <List.Item
                   title='Username'
-                  right={() => <TextInput value={'QuackDuster'} style={elements.inputDefault} />}
+                  right={() => <TextInput value={this.props.user.username} style={elements.inputDefault} />}
                 />
 
                 <List.Item
                   title='Email'
                   right={() => (
-                    <TextInput value={'quack@gmail.com'} style={elements.inputDefault} />
+                    <TextInput value={this.props.user.email} style={elements.inputDefault} />
                   )}
                 />
               </List.Section>
@@ -104,27 +105,28 @@ export default class UserInfo extends Component {
               <List.Section>
                 <List.Item
                   title='Street'
-                  right={() => <TextInput value={'Wallaby St 123'} style={elements.inputDefault} />}
+                  right={() => <TextInput value={this.props.user.address} style={elements.inputDefault} />}
                 />
 
                 <List.Item
                   title='City'
-                  right={() => <TextInput value={'Sydney'} style={elements.inputDefault} />}
+                  right={() => <TextInput value={this.props.user.city} style={elements.inputDefault} />}
                 />
 
                 <List.Item
                   title='Country'
-                  right={() => <TextInput value={'Australia'} style={elements.inputDefault} />}
+                  right={() => <TextInput value={this.props.user.country} style={elements.inputDefault} />}
                 />
                 <List.Item
                   title='Zip Code'
-                  right={() => <TextInput value={'29000'} style={elements.inputDefault} />}
+                  right={() => <TextInput value={String(this.props.user.postal_code)} style={elements.inputDefault} />}
                 />
               </List.Section>
             </View>
-            <Divider style={elements.dividerSection} />
+            
           </CollapseBody>
         </Collapse>
+        
         <View
           // Container for the third row
           style={containers.rowContainerOrders}
