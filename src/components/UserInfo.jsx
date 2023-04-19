@@ -13,10 +13,66 @@ export default class UserInfo extends Component {
     this.state = {
       generalIsActive: false,
       domicileIsActive: false,
+      text: '',
+      textUsername: "",
+      textEmail: "",
+      textStreet: "",
+      textCity: "",
+      textCountry: "",
+      textZipCode: "",
     };
   }
 
+  handleChangeText = (inputName, newText) => {
+    this.setState({ [inputName]: newText });
+  };
+
+async callAPI(){
+  /* const config = {
+    method: "PUT",
+    headers: {
+      "Content-type": 'application/json',
+      Authorization: "Token " + await AsyncStorage.getItem("token"),
+    },
+    body: JSON.stringify(
+        {
+          username: "",
+          email: "henrikhwolf@gmail.com",
+          city: "Guatemala, city",
+          address: "direccion",
+          postal_code: 547,
+          country: ""
+        }
+    )
+  };
+  try {
+    await fetch(
+      `https://findgure.up.railway.app/api/users/data/`,
+      config
+    );
+      } catch (e) {
+    ToastAndroid.show(e.toString(), ToastAndroid.LONG);
+  } */
+  console.log("Test callAPI")
+}
+
+  async saveProfile() {
+    console.log("push")
+    this.callAPI()
+    console.log("sent")
+  }
+
+  componentDidMount(){
+    this.state.textUsername = this.props.user.username;
+    this.state.textEmail = this.props.user.email;
+    this.state.textStreet = this.props.user.address;
+    this.state.textCity = this.props.user.city;
+    this.state.textCountry = this.props.user.country;
+    this.state.textZipCode = String(this.props.user.postal_code);
+  }
+
   render() {
+    
     return (
       <View style={containers.mainContainer}>
         <Collapse
@@ -55,14 +111,26 @@ export default class UserInfo extends Component {
               <List.Section>
                 <List.Item
                   title='Username'
-                  right={() => <TextInput value={this.props.user.username} style={elements.inputDefault} />}
+                  right={() =>
+                    <TextInput
+                      placeholder={'Username'}
+                      value={this.state.textUsername}
+                      onChangeText={(newText) => this.handleChangeText('textUsername', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
 
                 <List.Item
                   title='Email'
-                  right={() => (
-                    <TextInput value={this.props.user.email} style={elements.inputDefault} />
-                  )}
+                  right={() => 
+                    <TextInput
+                      placeholder={'Email'}
+                      value={this.state.textEmail}
+                      onChangeText={(newText) => this.handleChangeText('textEmail', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
               </List.Section>
             </View>
@@ -105,27 +173,68 @@ export default class UserInfo extends Component {
               <List.Section>
                 <List.Item
                   title='Street'
-                  right={() => <TextInput value={this.props.user.address} style={elements.inputDefault} />}
+                  right={() => 
+                    <TextInput
+                      placeholder={'Street'}
+                      value={this.state.textStreet}
+                      onChangeText={(newText) => this.handleChangeText('textStreet', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
-
+                
                 <List.Item
                   title='City'
-                  right={() => <TextInput value={this.props.user.city} style={elements.inputDefault} />}
+                  right={() =>
+                    <TextInput
+                      placeholder={'City'}
+                      value={this.state.textCity}
+                      onChangeText={(newText) => this.handleChangeText('textCity', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
 
                 <List.Item
                   title='Country'
-                  right={() => <TextInput value={this.props.user.country} style={elements.inputDefault} />}
+                  right={() =>
+                    <TextInput
+                      placeholder={'Country'}
+                      value={this.state.textCountry}
+                      onChangeText={(newText) => this.handleChangeText('textCountry', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
                 <List.Item
                   title='Zip Code'
-                  right={() => <TextInput value={String(this.props.user.postal_code)} style={elements.inputDefault} />}
+                  right={() =>
+                    <TextInput
+                      placeholder={'Zip Code'}
+                      value={this.state.textZipCode}
+                      onChangeText={(newText) => this.handleChangeText('textZipCode', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
               </List.Section>
             </View>
             
           </CollapseBody>
         </Collapse>
+
+        <View
+          // Container for the third row
+          style={containers.rowContainerOrders}
+        >
+          <TouchableOpacity style={containers.buttonContainer} onPress={() => this.saveProfile()}>
+            
+              <Ionicons name='receipt-outline' size={24} color={COLORS.DARK_PURPLE} />
+              <Text style={elements.textSectionTitle}>Save profile</Text>
+            
+          </TouchableOpacity>
+        </View>
+        <Divider style={elements.dividerSection} />
         
         <View
           // Container for the third row

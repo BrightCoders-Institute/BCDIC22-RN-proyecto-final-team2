@@ -63,6 +63,7 @@ export default class LoggedNav extends Component {
           name="UserProfile"
           component={UserProfile}
           options={{
+            unmountOnBlur: true,
             headerShown: true,
             tabBarButton: () => null,
             headerLeft: (props) => (
