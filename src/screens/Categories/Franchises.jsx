@@ -1,4 +1,4 @@
-import { Text, View, FlatList, ScrollView } from "react-native";
+import { Text, View, FlatList, ScrollView, TouchableOpacity, } from "react-native";
 import React, { Component } from "react";
 import { containers } from "../../styles/FranchisesScreen/Screen_Franchises";
 import { titles } from "../../styles/FranchisesScreen/Screen_Franchises";
@@ -84,7 +84,16 @@ export default class Franchises extends Component {
                     )}
                     renderItem={({ item:product }) => {
                       return (
-                        <ProductItem product={product} isFavorite={this.state.favorites.includes(product.id)} />
+                        <TouchableOpacity
+                          onPress={() => {
+                            this.props.navigation.navigate("OnProductDetail", {
+                              screen: "ProductDetail",
+                              params: { id: product.id },
+                            });
+                          }}
+                        >
+                          <ProductItem product={product} isFavorite={this.state.favorites.includes(product.id)} />
+                        </TouchableOpacity>
                       );
                     }}
                   />

@@ -9,6 +9,7 @@ import UserProfile from "../screens/UserProfile";
 import Cart from "../screens/Cart";
 import OnCheckout from "./onCheckout";
 import OnProductDetail from "./onProductDetail";
+import { navigations } from "../styles/NavStyles";
 
 const Tab = createBottomTabNavigator();
 export default class LoggedNav extends Component {
@@ -33,6 +34,33 @@ export default class LoggedNav extends Component {
             unmountOnBlur: true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"home"} size={size} color={color} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="OnProductDetail"
+          component={OnProductDetail}
+          options={{
+            headerShown: true,
+            headerBackVisible: false,
+            tabBarButton: () => null,
+            headerLeft: (props) => (
+              <FontAwesome5
+                onPress={() => this.props.navigation.navigate("UserProfile")}
+                name="user-circle"
+                style={navigations.iconUser}
+                size={30}
+                color={props.tintColor}
+              />
+            ),
+            headerRight: (props) => (
+              <AntDesign
+                name="shoppingcart"
+                size={30}
+                style={navigations.iconcart}
+                color={props.tintColor}
+              />
             ),
           }}
         />
@@ -70,7 +98,7 @@ export default class LoggedNav extends Component {
               <FontAwesome5
                 onPress={() => this.props.navigation.navigate("UserProfile")}
                 name="user-circle"
-                style={{ marginLeft: 15 }}
+                style={navigations.iconUser}
                 size={30}
                 color={props.tintColor}
               />
@@ -80,7 +108,7 @@ export default class LoggedNav extends Component {
                 onPress={() => this.props.navigation.navigate("Cart")}
                 name="shoppingcart"
                 size={30}
-                style={{ marginRight: 15 }}
+                style={navigations.iconcart}
                 color={props.tintColor}
               />
             ),
@@ -97,7 +125,7 @@ export default class LoggedNav extends Component {
               <FontAwesome5
                 onPress={() => this.props.navigation.navigate("UserProfile")}
                 name="user-circle"
-                style={{ marginLeft: 15 }}
+                style={navigations.iconUser}
                 size={30}
                 color={props.tintColor}
               />
@@ -107,7 +135,7 @@ export default class LoggedNav extends Component {
                 onPress={() => this.props.navigation.navigate("Cart")}
                 name="shoppingcart"
                 size={30}
-                style={{ marginRight: 15 }}
+                style={navigations.iconcart}
                 color={props.tintColor}
               />
             ),
@@ -123,7 +151,7 @@ export default class LoggedNav extends Component {
               <FontAwesome5
                 onPress={() => this.props.navigation.navigate("UserProfile")}
                 name="user-circle"
-                style={{ marginLeft: 15 }}
+                style={navigations.iconUser}
                 size={30}
                 color={props.tintColor}
               />
@@ -132,7 +160,7 @@ export default class LoggedNav extends Component {
               <AntDesign
                 name="shoppingcart"
                 size={30}
-                style={{ marginRight: 15 }}
+                style={navigations.iconcart}
                 color={props.tintColor}
               />
             ),
