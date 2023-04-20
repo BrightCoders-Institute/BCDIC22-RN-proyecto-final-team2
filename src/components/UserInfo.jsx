@@ -1,4 +1,4 @@
-import { Text, View, Dimensions, TouchableOpacity, TextInput, ToastAndroid } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, ToastAndroid } from 'react-native';
 import React, { Component } from 'react';
 import { Ionicons, Octicons, Feather } from '@expo/vector-icons';
 import { COLORS } from '../styles/colors';
@@ -59,9 +59,7 @@ async callAPI(){
 }
 
   async saveProfile() {
-    console.log("push")
     this.callAPI()
-    console.log("sent")
   }
 
   componentDidMount(){
@@ -231,7 +229,7 @@ async callAPI(){
         >
           <TouchableOpacity style={containers.buttonContainer} onPress={() => this.saveProfile()}>
             
-              <Ionicons name='receipt-outline' size={24} color={COLORS.DARK_PURPLE} />
+              <Ionicons name='save-outline' size={24} color={COLORS.DARK_PURPLE} />
               <Text style={elements.textSectionTitle}>Save profile</Text>
             
           </TouchableOpacity>
@@ -239,7 +237,7 @@ async callAPI(){
         <Divider style={elements.dividerSection} />
         
         <View
-          // Container for the third row
+          // Container for the fourth row
           style={containers.rowContainerOrders}
         >
           <TouchableOpacity style={containers.buttonContainer}>
