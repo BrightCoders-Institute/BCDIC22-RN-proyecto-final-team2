@@ -1,4 +1,4 @@
-import { Text, View, Dimensions, TouchableOpacity, TextInput, Pressable } from 'react-native';
+import { Text, View, Dimensions, TouchableOpacity, TextInput, ToastAndroid } from 'react-native';
 import React, { Component } from 'react';
 import { Ionicons, Octicons, Feather } from '@expo/vector-icons';
 import { COLORS } from '../styles/colors';
@@ -6,6 +6,7 @@ import { Divider, List } from 'react-native-paper';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import { containers } from '../styles/UserProfileScreen/Components_UserInfo';
 import { elements } from '../styles/UserProfileScreen/Components_UserInfo';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default class UserInfo extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class UserInfo extends Component {
   };
 
 async callAPI(){
-  /* const config = {
+  const config = {
     method: "PUT",
     headers: {
       "Content-type": 'application/json',
@@ -36,12 +37,12 @@ async callAPI(){
     },
     body: JSON.stringify(
         {
-          username: "",
-          email: "henrikhwolf@gmail.com",
-          city: "Guatemala, city",
-          address: "direccion",
-          postal_code: 547,
-          country: ""
+          username: this.state.textUsername,
+          email: this.state.textEmail,
+          city: this.state.textCity,
+          address: this.state.textStreet,
+          postal_code: this.state.textZipCode,
+          country: this.state.textCountry,
         }
     )
   };
@@ -50,10 +51,11 @@ async callAPI(){
       `https://findgure.up.railway.app/api/users/data/`,
       config
     );
+    console.log("Test callAPI")
+    ToastAndroid.show("Profile Succesfully edited", ToastAndroid.LONG);
       } catch (e) {
     ToastAndroid.show(e.toString(), ToastAndroid.LONG);
-  } */
-  console.log("Test callAPI")
+  }
 }
 
   async saveProfile() {
