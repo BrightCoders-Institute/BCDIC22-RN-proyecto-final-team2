@@ -1,4 +1,4 @@
-import { Text, View, Dimensions, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, ToastAndroid } from 'react-native';
 import React, { Component } from 'react';
 import { Ionicons, Octicons, Feather } from '@expo/vector-icons';
 import { COLORS } from '../styles/colors';
@@ -6,6 +6,7 @@ import { Divider, List } from 'react-native-paper';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import { containers } from '../styles/UserProfileScreen/Components_UserInfo';
 import { elements } from '../styles/UserProfileScreen/Components_UserInfo';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default class UserInfo extends Component {
   constructor(props) {
@@ -13,9 +14,65 @@ export default class UserInfo extends Component {
     this.state = {
       generalIsActive: false,
       domicileIsActive: false,
+      text: '',
+      textUsername: "",
+      textEmail: "",
+      textStreet: "",
+      textCity: "",
+      textCountry: "",
+      textZipCode: "",
     };
   }
+
+  handleChangeText = (inputName, newText) => {
+    this.setState({ [inputName]: newText });
+  };
+
+async callAPI(){
+  const config = {
+    method: "PUT",
+    headers: {
+      "Content-type": 'application/json',
+      Authorization: "Token " + await AsyncStorage.getItem("token"),
+    },
+    body: JSON.stringify(
+        {
+          username: this.state.textUsername,
+          email: this.state.textEmail,
+          city: this.state.textCity,
+          address: this.state.textStreet,
+          postal_code: this.state.textZipCode,
+          country: this.state.textCountry,
+        }
+    )
+  };
+  try {
+    await fetch(
+      `https://findgure.up.railway.app/api/users/data/`,
+      config
+    );
+    console.log("Test callAPI")
+    ToastAndroid.show("Profile Succesfully edited", ToastAndroid.LONG);
+      } catch (e) {
+    ToastAndroid.show(e.toString(), ToastAndroid.LONG);
+  }
+}
+
+  async saveProfile() {
+    this.callAPI()
+  }
+
+  componentDidMount(){
+    this.state.textUsername = this.props.user.username;
+    this.state.textEmail = this.props.user.email;
+    this.state.textStreet = this.props.user.address;
+    this.state.textCity = this.props.user.city;
+    this.state.textCountry = this.props.user.country;
+    this.state.textZipCode = String(this.props.user.postal_code);
+  }
+
   render() {
+    
     return (
       <View style={containers.mainContainer}>
         <Collapse
@@ -54,14 +111,26 @@ export default class UserInfo extends Component {
               <List.Section>
                 <List.Item
                   title='Username'
-                  right={() => <TextInput value={'QuackDuster'} style={elements.inputDefault} />}
+                  right={() =>
+                    <TextInput
+                      placeholder={'Username'}
+                      value={this.state.textUsername}
+                      onChangeText={(newText) => this.handleChangeText('textUsername', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
 
                 <List.Item
                   title='Email'
-                  right={() => (
-                    <TextInput value={'quack@gmail.com'} style={elements.inputDefault} />
-                  )}
+                  right={() => 
+                    <TextInput
+                      placeholder={'Email'}
+                      value={this.state.textEmail}
+                      onChangeText={(newText) => this.handleChangeText('textEmail', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
               </List.Section>
             </View>
@@ -104,29 +173,71 @@ export default class UserInfo extends Component {
               <List.Section>
                 <List.Item
                   title='Street'
-                  right={() => <TextInput value={'Wallaby St 123'} style={elements.inputDefault} />}
+                  right={() => 
+                    <TextInput
+                      placeholder={'Street'}
+                      value={this.state.textStreet}
+                      onChangeText={(newText) => this.handleChangeText('textStreet', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
-
+                
                 <List.Item
                   title='City'
-                  right={() => <TextInput value={'Sydney'} style={elements.inputDefault} />}
+                  right={() =>
+                    <TextInput
+                      placeholder={'City'}
+                      value={this.state.textCity}
+                      onChangeText={(newText) => this.handleChangeText('textCity', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
 
                 <List.Item
                   title='Country'
-                  right={() => <TextInput value={'Australia'} style={elements.inputDefault} />}
+                  right={() =>
+                    <TextInput
+                      placeholder={'Country'}
+                      value={this.state.textCountry}
+                      onChangeText={(newText) => this.handleChangeText('textCountry', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
                 <List.Item
                   title='Zip Code'
-                  right={() => <TextInput value={'29000'} style={elements.inputDefault} />}
+                  right={() =>
+                    <TextInput
+                      placeholder={'Zip Code'}
+                      value={this.state.textZipCode}
+                      onChangeText={(newText) => this.handleChangeText('textZipCode', newText)}
+                      style={elements.inputDefault}
+                    />
+                  }
                 />
               </List.Section>
             </View>
-            <Divider style={elements.dividerSection} />
+            
           </CollapseBody>
         </Collapse>
+
         <View
           // Container for the third row
+          style={containers.rowContainerOrders}
+        >
+          <TouchableOpacity style={containers.buttonContainer} onPress={() => this.saveProfile()}>
+            
+              <Ionicons name='save-outline' size={24} color={COLORS.DARK_PURPLE} />
+              <Text style={elements.textSectionTitle}>Save profile</Text>
+            
+          </TouchableOpacity>
+        </View>
+        <Divider style={elements.dividerSection} />
+        
+        <View
+          // Container for the fourth row
           style={containers.rowContainerOrders}
         >
           <TouchableOpacity style={containers.buttonContainer}>

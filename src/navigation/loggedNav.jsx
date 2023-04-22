@@ -31,7 +31,7 @@ export default class LoggedNav extends Component {
           name="OnHome"
           component={OnHome}
           options={{
-            unmountOnBlur:true,
+            unmountOnBlur: true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"home"} size={size} color={color} />
             ),
@@ -69,7 +69,7 @@ export default class LoggedNav extends Component {
           name="OnCategories"
           component={OnCategories}
           options={{
-            unmountOnBlur:true,
+            unmountOnBlur: true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"th-large"} size={size} color={color} />
             ),
@@ -80,7 +80,7 @@ export default class LoggedNav extends Component {
           name="OnWishlist"
           component={OnWishlist}
           options={{
-            unmountOnBlur:true,
+            unmountOnBlur: true,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name={"heart"} size={size} color={color} />
             ),
@@ -91,6 +91,7 @@ export default class LoggedNav extends Component {
           name="UserProfile"
           component={UserProfile}
           options={{
+            unmountOnBlur: true,
             headerShown: true,
             tabBarButton: () => null,
             headerLeft: (props) => (
