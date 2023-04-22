@@ -54,13 +54,11 @@ npm test
 - React Native
 - Github
 - Git
-- Visual Studio Code
 - Expo
 - Expo Go
 - JavaScript
 - Django
 - Figma
-- Android
 
 
 ## Credits
