@@ -41,8 +41,14 @@ npx expo start
 
 ### Usage
 <!-- Aquí escribiremos cómo se utiliza y navega a través de la aplicación -->
-WELCOME TO FINGURE!!!
-To start using this application, you must be previously registered. If you are not registered yet, you can do so by clicking on "Register". Once you have done this, you will need to Log In. If you already have an account, then simply Log In directly. You will be redirected to the Home screen where you can see our best-selling products as well as newly added products. You will have a search bar at the top in case you want to search for a specific product, and there will also be a bottom bar that will allow you to enter the Categories screen, go back to Home at any time, as well as enter the Wishlist section, which allows you to store products that you have previously added as favorites. It should be noted that by clicking on any product, it will display a new screen where you can learn more information about it, and you can also add that product to your shopping cart for later purchase.
+WELCOME TO FINDGURE!!!
+To start using this application, you must be previously registered.
+If you are not registered yet, you can do so by clicking on "Register".
+Once you have done this, you will need to Log In. If you already have an account, then simply Log In directly.
+You will be redirected to the Home screen where you can see our best-selling products as well as newly added products.
+You will have a search bar at the top in case you want to search for a specific product, and there will also be a bottom bar that will allow you to enter the Categories screen, go back to Home at any time, as well as enter the Wishlist section, which allows you to store products that you have previously added as favorites.
+It should be noted that by clicking on any product, it will display a new screen where you can learn more information about it, and you can also add that product to your shopping cart for later purchase.
+
 ### Tests
 
 ```
