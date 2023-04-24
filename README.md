@@ -62,7 +62,6 @@ npm test
 - Github
 - Git
 - Expo
-- Expo Go
 - JavaScript
 - Django
 - Figma
