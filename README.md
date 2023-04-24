@@ -18,15 +18,15 @@
 - [Badges](#Badges)
 
 ## Description.
-    Basic React Native application that simulates an e-commerce store dedicated to selling collectible figures from different categories such as series, anime, movies, etc.
+  Basic React Native application that simulates an e-commerce store dedicated to selling collectible figures from different categories such as series, anime, movies, etc.
 
 ### Screenshots
 
 ![Captura de pantalla (203)](https://user-images.githubusercontent.com/87275990/223787413-434f4e79-2833-48bc-b083-05c2b6d9cacb.png)
 ![Captura de pantalla (205)](https://user-images.githubusercontent.com/87275990/224437954-0ea71c16-395f-45e7-8236-c3f476a0c230.png)
 ![image](https://user-images.githubusercontent.com/54423116/224858323-42f848fc-0028-40ef-a394-892bbb750f83.png)
-# How to use the project
 
+# How to use the project
 ### How to Install and Run the Project
 
 ```
@@ -42,6 +42,7 @@ npx expo start
 ### Usage
 <!-- Aquí escribiremos cómo se utiliza y navega a través de la aplicación -->
 WELCOME TO FINDGURE!!!
+
 To start using this application, you must be previously registered.
 If you are not registered yet, you can do so by clicking on "Register".
 Once you have done this, you will need to Log In. If you already have an account, then simply Log In directly.
