@@ -76,7 +76,7 @@ export default function Checkout2({ navigation }) {
                     value={values.cardNumber}
                   />
                   {touched.cardNumber && errors.cardNumber && (
-                    <Text style={styles.error}>{errors.cardNumber}</Text>
+                    <Text style={stylesCheckout.error}>{errors.cardNumber}</Text>
                   )}
                 </View>
                 <View style={stylesCheckout.containerFieldsMedium}>
@@ -90,7 +90,7 @@ export default function Checkout2({ navigation }) {
                       value={values.expiration}
                     />
                     {touched.expiration && errors.expiration && (
-                      <Text style={styles.error}>{errors.expiration}</Text>
+                      <Text style={stylesCheckout.error}>{errors.expiration}</Text>
                     )}
                   </View>
                   <View style={stylesCheckout.containerFieldCvv}>
