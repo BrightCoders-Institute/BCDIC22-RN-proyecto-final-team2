@@ -5,8 +5,6 @@ import Checkout2 from "../screens/Checkout/Checkout2";
 import Checkout3 from "../screens/Checkout/Checkout3";
 import OnHome from "./onHome";
 import { FontAwesome5, AntDesign } from "@expo/vector-icons";
-import UserProfile from "../screens/UserProfile";
-import SearchInput from "../components/SearchInput";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +16,7 @@ export default class OnCheckout extends Component {
   render() {
     return (
       <Stack.Navigator
-        initialRouteName="Checkout1"
+        initialRouteName = "Checkout1"
         screenOptions={{
           headerShown: true,
           headerLeft: (props) => (
