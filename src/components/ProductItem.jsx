@@ -6,11 +6,45 @@ import { COLORS } from "../styles/colors";
 import { containers } from "../styles/HomeScreen/Components_ProductCard";
 import { elements } from "../styles/HomeScreen/Components_ProductCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 export const ProductItem = ({ product, isFavorite }) => {
+  const navigation = useNavigation();
   const [favorite, setFavorite] = useState(isFavorite);
   const { name, franchise, category, image, id, rating, price } = product;
+  const addToCart = async () => {
+    const token = await AsyncStorage.getItem("token");
+    try {
+      const response = await fetch(
+        "https://findgure.up.railway.app/api/orders_items/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Token " + token,
+          },
+          body: JSON.stringify({
+            product_id: id,
+            qty: 1,
+          }),
+        }
+      );
 
+      if (!response.ok) {
+        throw new Error("Unable to add the product to the cart");
+      }
+
+      const data = await response.json();
+      ToastAndroid.show(
+        "The product was successfully added to the cart",
+        ToastAndroid.LONG
+      );
+    } catch (e) {
+      ToastAndroid.show(e.toString(), ToastAndroid.LONG);
+    }
+  };
+
+  // Whish-list
   const sendFavorite = async () => {
     const token = await AsyncStorage.getItem("token");
 
@@ -27,7 +61,10 @@ export const ProductItem = ({ product, isFavorite }) => {
         `https://findgure.up.railway.app/api/product/favorite/${id}/`,
         config
       );
-      ToastAndroid.show("The product was succesfully " + message + " your wishlist", ToastAndroid.LONG);
+      ToastAndroid.show(
+        "The product was succesfully " + message + " your wishlist",
+        ToastAndroid.LONG
+      );
       setFavorite(!favorite);
     } catch (e) {
       ToastAndroid.show(e.toString(), ToastAndroid.LONG);
@@ -61,8 +98,9 @@ export const ProductItem = ({ product, isFavorite }) => {
           </Text>
         </Text>
         <Text style={elements.textCategory}>
-          Category: <Text style={elements.productCategory}>
-          {franchise.category.length > 10
+          Category:{" "}
+          <Text style={elements.productCategory}>
+            {franchise.category.length > 10
               ? franchise.category.substring(0, 10) + "..."
               : franchise.category}
           </Text>
@@ -75,10 +113,13 @@ export const ProductItem = ({ product, isFavorite }) => {
           starContainerStyle={elements.productRating}
         />
         <Text style={elements.productPrice}>$ {price + ".00"}</Text>
-        <Pressable onButtonPress style={containers.buttonBuy}>
+        <Pressable
+          onPress={() => navigation.navigate("Cart")}
+          style={containers.buttonBuy}
+        >
           <Text style={elements.textButtonBuy}>Buy Now</Text>
         </Pressable>
-        <Pressable onButtonPress style={containers.buttonAddToCart}>
+        <Pressable onPress={addToCart} style={containers.buttonAddToCart}>
           <Text style={elements.textButtonAddToCart}>Add to cart</Text>
           <Ionicons
             name="cart-outline"
