@@ -73,7 +73,7 @@ const Cart = (props) => {
       />
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Checkout");
+          navigation.navigate("OnCheckout");
         }}
         style={containers.buttonContainer}
       >
