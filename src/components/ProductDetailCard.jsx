@@ -27,6 +27,7 @@ import {
 } from "accordion-collapse-react-native";
 
 const ProductDetailCard = ({ id }) => {
+  const navigation = useNavigation();
   const [isActive, setIsActive] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [details, setDetails] = useState("");
@@ -108,7 +109,10 @@ const ProductDetailCard = ({ id }) => {
             <Text style={productDetailCard.priceProduct}>
               $ {details.price + ".00"}
             </Text>
-            <Pressable style={productDetailCard.buttonBuy}>
+            <Pressable
+              onPress={() => navigation.navigate("Cart")}
+              style={productDetailCard.buttonBuy}
+            >
               <Text style={elements.textButtonBuy}>Buy Now</Text>
             </Pressable>
             <Pressable style={productDetailCard.buttonAddToCart}>

@@ -39,7 +39,10 @@ export default function ReviewThisProduct({
         requestOptions
       );
       const data = await response.json();
-      if (!response.ok) {
+      if (response.status === 401) {
+        setErrorMessage("Por favor inicia sesión!");
+        setVisibleError(!visibleError);
+      } else if (!response.ok) {
         data.message
           ? setErrorMessage(data.message)
           : setErrorMessage("Make sure to provide a rating and review!");
