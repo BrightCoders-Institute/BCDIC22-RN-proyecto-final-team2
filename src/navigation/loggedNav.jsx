@@ -145,7 +145,8 @@ export default class LoggedNav extends Component {
           name="OnCheckout"
           component={OnCheckout}
           options={{
-            headerShown: false,
+            unmountOnBlur: true,
+            headerShown: true,
             tabBarButton: () => null,
             headerLeft: (props) => (
               <FontAwesome5

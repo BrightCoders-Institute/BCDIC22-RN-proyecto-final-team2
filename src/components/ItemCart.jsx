@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, Pressable, Image, TouchableOpacity } from "react-native";
 import { COLORS } from "../styles/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -7,6 +7,7 @@ import Counter from "react-native-counters";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ItemCart = (props) => {
+  const [totalPrice, setTotalPrice] = useState("$" + (props.qty*props.price) +".00")
   const deleteOrderItem = async (productId) => {
     const token = await AsyncStorage.getItem("token");
     try {
@@ -53,9 +54,13 @@ const ItemCart = (props) => {
       console.error("Error updating order item quantity:", error);
     }
   };
+  
   const onChange = (number, type) => {
     updateOrderItemQty(props.id, number);
+    const price = "$" + (number*props.price) +".00";
+    setTotalPrice(price);
   };
+  
   return (
     <View style={containers.cardContainer}>
       <View style={containers.itemsContainer}>
@@ -83,7 +88,7 @@ const ItemCart = (props) => {
             Category:{" "}
             <Text style={elements.productCategory}>{props.category}</Text>
           </Text>
-          <Text style={elements.priceText}>$ {props.price + ".00"}</Text>
+          <Text style={elements.priceText}>{totalPrice}</Text>
           <Text style={elements.descriptionText}>
             {props.description && props.description.length > 30
               ? props.description.substring(0, 30) + "..."
