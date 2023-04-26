@@ -18,7 +18,7 @@ export default class OnCheckout extends Component {
       <Stack.Navigator
         initialRouteName = "Checkout1"
         screenOptions={{
-          headerShown: true,
+          headerShown: false,
           headerLeft: (props) => (
             <FontAwesome5
               onPress={() => this.props.navigation.navigate("UserProfile")}

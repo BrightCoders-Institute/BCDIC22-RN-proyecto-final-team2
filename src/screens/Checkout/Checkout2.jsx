@@ -15,8 +15,47 @@ import {
 import { Formik } from "formik";
 import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS } from "../../styles/colors";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Checkout2({ navigation }) {
+  const [orderItems, setOrderItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const fetchOrderItems = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      const response = await fetch(
+        "https://findgure.up.railway.app/api/get_orders/",
+        {
+          headers: {
+            Authorization: "Token " + token,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch order items");
+      }
+
+      const data = await response.json();
+      setOrderItems(data);
+    } catch (error) {
+      console.error("Error fetching order items:", error);
+    }
+  };
+
+  useEffect(()=>{
+    fetchOrderItems()
+  },[])
+
+  useEffect(() => {
+    let totalPrice = 0;
+    orderItems.forEach(item => {
+      totalPrice += item.product_id.price * item.qty;
+    });
+    setTotalPrice(totalPrice);
+  }, [orderItems]);
+
   return (
     <View style={containers.bgContainer}>
       <Image
@@ -127,7 +166,7 @@ export default function Checkout2({ navigation }) {
                 <View style={stylesCheckout.containerSub}>
                   <View style={stylesCheckout.containerSubtotal}>
                     <Text style={titles.amount}>Subtotal:</Text>
-                    <Text style={titles.amount}>$45.00</Text>
+                    <Text style={titles.amount}> {"$" + totalPrice + ".00"}</Text>
                   </View>
                   <View style={stylesCheckout.containerShipping}>
                     <Text style={titles.amount}>Shipping costs:</Text>
@@ -137,7 +176,7 @@ export default function Checkout2({ navigation }) {
                 <View style={stylesCheckout.containerTot}>
                   <View style={stylesCheckout.containerTotal}>
                     <Text style={titles.total}>Total:</Text>
-                    <Text style={titles.total}>$45.00</Text>
+                    <Text style={titles.total}>{"$" + totalPrice + ".00"}</Text>
                   </View>
                 </View>
               </View>
